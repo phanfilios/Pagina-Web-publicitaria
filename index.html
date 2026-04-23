@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Humbrella Man | Agencia Publicitaria Creativa</title>
+  <!-- Google Fonts & Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefefe;
+      color: #1e1e2f;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #ff7a2f; border-radius: 10px; }
+
+    /* Header flotante */
+    .main-header {
+      background: rgba(10, 10, 20, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon { font-size: 2.2rem; color: #ff8c42; filter: drop-shadow(0 0 4px rgba(255,140,66,0.5)); }
+    .logo-area h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFF 30%, #ffb347 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo-area span { font-size: 0.85rem; font-weight: 400; color: #ddd; background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 40px; margin-left: 8px; }
+
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { color: #f0f0f0; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.2s; }
+    .nav-links a:hover { color: #ff9f4a; transform: translateY(-2px); }
+    .btn-nav-contact { background: linear-gradient(95deg, #ff7a2f, #ffb347); padding: 8px 20px; border-radius: 40px; color: white !important; box-shadow: 0 4px 12px rgba(255,122,47,0.3); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: radial-gradient(circle at 10% 30%, #0b0b1a, #03030f);
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero .animated-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(45deg, rgba(255,140,66,0.05) 0px, rgba(255,140,66,0.05) 2px, transparent 2px, transparent 8px);
+      pointer-events: none;
+    }
+    .hero-content { z-index: 2; max-width: 900px; padding: 2rem; }
+    .hero h1 {
+      font-size: 4.2rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #FFE6C7, #FFB347, #FF7A2F);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.8s ease;
+    }
+    .hero p { font-size: 1.4rem; color: #e0e0ff; margin-bottom: 2rem; animation: fadeUp 0.9s ease; }
+    .hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(105deg, #ff7a2f, #ff9f4a);
+      padding: 14px 34px;
+      border-radius: 50px;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 10px 20px -5px rgba(255,122,47,0.4);
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 20px 30px -8px rgba(255,122,47,0.6); }
+    .btn-outline-light {
+      background: transparent;
+      border: 2px solid #ff9f4a;
+      padding: 12px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      color: #ffd7b0;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+    .btn-outline-light:hover { background: rgba(255,159,74,0.15); color: white; border-color: #ffb85e; }
+
+    /* Secciones generales */
+    .section { padding: 80px 24px; max-width: 1300px; margin: 0 auto; }
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 20px;
+      background: linear-gradient(125deg, #1e1e2f, #2a2a40);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .section-sub { text-align: center; max-width: 680px; margin: 0 auto 50px auto; color: #5a5a70; font-size: 1.2rem; }
+
+    /* Tarjetas de servicios clickeables */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin-top: 20px;
+    }
+    .service-card {
+      background: #ffffff;
+      border-radius: 32px;
+      padding: 2rem 1.8rem;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: "🔍 Ver más";
+      position: absolute;
+      bottom: -40px;
+      left: 0;
+      width: 100%;
+      background: #ff7a2f;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 8px;
+      transition: 0.25s ease;
+      text-align: center;
+      opacity: 0;
+    }
+    .service-card:hover::after { bottom: 0; opacity: 1; }
+    .service-card:hover { transform: translateY(-12px); box-shadow: 0 28px 40px -12px rgba(255, 90, 0, 0.25); border-bottom: 3px solid #ff7a2f; }
+    .service-icon {
+      font-size: 3.2rem;
+      background: linear-gradient(135deg, #ff7a2f20, #ffb34720);
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px auto;
+      border-radius: 30px;
+      color: #ff7a2f;
+    }
+    .service-card h3 { font-size: 1.7rem; margin-bottom: 1rem; font-weight: 700; }
+    .service-card p { color: #4a4a5a; line-height: 1.5; }
+
+    /* Sección dinámica de contenido (Branding / Audiovisual) */
+    .dynamic-case {
+      background: linear-gradient(145deg, #ffffff 0%, #fff8f2 100%);
+      border-radius: 60px;
+      padding: 3rem 2.5rem;
+      margin: 40px auto 60px;
+      max-width: 1300px;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.12);
+      transition: all 0.3s ease;
+      scroll-margin-top: 90px;
+    }
+    .dynamic-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .dynamic-header h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      background: linear-gradient(115deg, #1e1e2f, #ff7a2f);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin: 0;
+    }
+    .close-case {
+      background: transparent;
+      border: none;
+      font-size: 1.3rem;
+      color: #ff7a2f;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    .close-case:hover { transform: scale(1.1); color: #b23c00; }
+    .case-description {
+      text-align: center;
+      font-size: 1.15rem;
+      color: #4a4a5a;
+      max-width: 850px;
+      margin: 1rem auto 2rem auto;
+    }
+    .case-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .case-block {
+      flex: 1;
+      min-width: 260px;
+      background: rgba(255,255,245,0.7);
+      backdrop-filter: blur(2px);
+      border-radius: 40px;
+      padding: 1.8rem;
+      border: 1px solid rgba(255,122,47,0.2);
+    }
+    .case-block h3 {
+      font-size: 1.6rem;
+      color: #ff7a2f;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .case-block ul { list-style: none; padding: 0; }
+    .case-block li {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #2c2c3a;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .case-block li i { color: #ff9f4a; font-size: 1rem; margin-top: 3px; }
+
+    /* About y contacto */
+    .about-modern {
+      background: linear-gradient(115deg, #fef6ef 0%, #fff4ea 100%);
+      border-radius: 60px;
+      padding: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .about-text { flex: 1.2; }
+    .about-text h3 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
+    .about-stats { flex: 0.8; display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .stat-item { background: white; border-radius: 28px; padding: 1.2rem 1.8rem; text-align: center; min-width: 120px; box-shadow: 0 12px 20px rgba(0,0,0,0.05); }
+    .stat-number { font-size: 2.2rem; font-weight: 800; color: #ff7a2f; }
+
+    .contact-card {
+      background: #ffffff;
+      border-radius: 48px;
+      box-shadow: 0 30px 50px rgba(0,0,0,0.05);
+      padding: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 30px;
+    }
+    .contact-info { flex: 1; }
+    .contact-detail { display: flex; align-items: center; gap: 15px; margin: 25px 0; }
+    .contact-detail i { font-size: 1.8rem; color: #ff7a2f; }
+    .contact-form { flex: 1; background: #faf8f5; padding: 1.8rem; border-radius: 32px; }
+    .input-group input, .input-group textarea { width: 100%; padding: 14px 18px; border: 1px solid #e2e2ec; border-radius: 60px; font-family: 'Inter', sans-serif; }
+    .input-group textarea { border-radius: 28px; }
+    .btn-submit { background: #ff7a2f; border: none; width: 100%; padding: 14px; border-radius: 60px; font-weight: bold; color: white; cursor: pointer; transition: 0.2s; }
+    .btn-submit:hover { background: #e56218; }
+
+    .footer { background: #0b0b14; color: #bbb; text-align: center; padding: 2rem; margin-top: 40px; }
+    .social-icons { display: flex; justify-content: center; gap: 28px; margin: 20px 0; }
+    .social-icons a { color: #ccc; font-size: 1.7rem; transition: 0.2s; }
+    .social-icons a:hover { color: #ff7a2f; transform: translateY(-5px); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 800px) {
+      .main-header { flex-direction: column; gap: 12px; }
+      .hero h1 { font-size: 2.6rem; }
+      .section-title { font-size: 2.2rem; }
+      .dynamic-case { padding: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="main-header">
+  <div class="logo-area">
+    <i class="fas fa-umbrella logo-icon"></i>
+    <h1>Humbrella Man <span>creative agency</span></h1>
+  </div>
+  <div class="nav-links">
+    <a href="#servicios"><i class="fas fa-cogs"></i> Servicios</a>
+    <a href="#nosotros"><i class="fas fa-users"></i> Nosotros</a>
+    <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
+    <a href="#contacto" class="btn-nav-contact"><i class="fas fa-rocket"></i> Cotiza</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="animated-bg"></div>
+  <div class="hero-content">
+    <h1>Ideas que <span class="highlight">desatan</span> el potencial de tu marca</h1>
+    <p><i class="fas fa-bolt" style="color:#ffb347;"></i> Creatividad audaz, resultados que inspiran.</p>
+    <div class="hero-buttons">
+      <a href="#servicios" class="btn-primary" id="explorarServiciosBtn"><i class="fas fa-chart-line"></i> Explorar servicios</a>
+      <a href="#contacto" class="btn-outline-light"><i class="fas fa-comment-dots"></i> Hablemos</a>
+    </div>
+  </div>
+</section>
+
+<section id="servicios" class="section">
+  <h2 class="section-title">Soluciones que marcan la diferencia</h2>
+  <div class="section-sub">Estrategia + diseño + tecnología = impacto real</div>
+  <div class="services-grid">
+    <div class="service-card" data-case="branding">
+      <div class="service-icon"><i class="fas fa-palette"></i></div>
+      <h3>Branding</h3>
+      <p>Identidades visuales poderosas y storytelling que enamoran.</p>
+    </div>
+    <div class="service-card" data-case="audiovisual">
+      <div class="service-icon"><i class="fas fa-video"></i></div>
+      <h3>Producción Audiovisual</h3>
+      <p>Spots, motion y contenido premium para conectar emocionalmente.</p>
+    </div>
+    <div class="service-card" data-case="audiovisual">
+      <div class="service-icon"><i class="fas fa-chart-simple"></i></div>
+      <h3>Marketing Digital</h3>
+      <p>SEO, SEM, redes sociales de alto rendimiento para escalar tu negocio.</p>
+    </div>
+    <div class="service-card" data-case="audiovisual">
+      <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+      <h3>Publicidad 360°</h3>
+      <p>Campañas integradas que maximizan cada inversión.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Sección dinámica: muestra Branding o Audiovisual según clic -->
+<div id="dynamicCaseSection" class="dynamic-case" style="display: none;">
+  <div class="dynamic-header">
+    <h2 id="dynamicTitle">Branding</h2>
+    <button class="close-case" id="closeDynamicBtn"><i class="fas fa-times-circle"></i> Cerrar</button>
+  </div>
+  <div id="dynamicContent"></div>
+</div>
+
+<section id="nosotros" class="section">
+  <div class="about-modern">
+    <div class="about-text">
+      <h3><i class="fas fa-cloud-sun" style="color:#ff7a2f;"></i> Más que una agencia, un paraguas creativo</h3>
+      <p>En <strong>Humbrella Man</strong> creemos que bajo el mismo paraguas caben las ideas más brillantes y las estrategias más atrevidas. Somos un colectivo de creativos, estrategas y productores que transforman conceptos en experiencias inolvidables.</p>
+      <p>Con +8 años en el mercado latinoamericano, hemos ayudado a más de 150 marcas a conectar genuinamente con su público. Nuestro ADN: innovación, honestidad y resultados medibles.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-item"><div class="stat-number">150+</div><div>Proyectos exitosos</div></div>
+      <div class="stat-item"><div class="stat-number">98%</div><div>Clientes satisfechos</div></div>
+      <div class="stat-item"><div class="stat-number">12</div><div>Premios creativos</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="section">
+  <h2 class="section-title">Hagamos magia juntos</h2>
+  <div class="section-sub">Cuéntanos tu proyecto y te impulsaremos al siguiente nivel</div>
+  <div class="contact-card">
+    <div class="contact-info">
+      <h4><i class="fas fa-headset"></i> Conecta con nosotros</h4>
+      <p>Estamos a un mensaje de distancia. Respondemos en menos de 24h.</p>
+      <div class="contact-detail"><i class="fas fa-envelope-open-text"></i><div><strong>Email</strong><br>hola@humbrellaman.com</div></div>
+      <div class="contact-detail"><i class="fab fa-whatsapp"></i><div><strong>WhatsApp</strong><br>+51 999 888 777</div></div>
+      <div class="contact-detail"><i class="fas fa-map-marker-alt"></i><div><strong>Oficina creativa</strong><br>Lima / Madrid / CDMX</div></div>
+    </div>
+    <div class="contact-form">
+      <form id="contactForm" action="#" method="post">
+        <div class="input-group"><input type="text" placeholder="Tu nombre *" required></div>
+        <div class="input-group"><input type="email" placeholder="Correo electrónico *" required></div>
+        <div class="input-group"><textarea rows="3" placeholder="Cuéntanos tu idea o proyecto..."></textarea></div>
+        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar mensaje</button>
+        <p style="font-size: 0.75rem; margin-top: 12px; text-align: center;">Te contactaremos a la brevedad</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="social-icons">
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+  <p>© 2026 Humbrella Man · Agencia Publicitaria Creativa · Inspiramos marcas que cambian el juego</p>
+  <p style="margin-top: 8px; font-size: 0.8rem;">📢 Creatividad sin paraguas · Resultados a prueba de lluvia</p>
+</footer>
+
+<script>
+  // Contenido de Branding (nuevo caso)
+  const brandingHTML = `
+    <div class="case-grid">
+      <div class="case-block">
+        <h3><i class="fas fa-paintbrush"></i> Identidad que trasciende</h3>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> <strong>Identidades visuales poderosas:</strong> sistemas gráficos coherentes que reflejan la esencia de la marca y generan reconocimiento inmediato.</li>
+          <li><i class="fas fa-book-open"></i> <strong>Storytelling que conecta:</strong> relatos que dan vida a la marca y crean vínculos emocionales duraderos con los consumidores.</li>
+          <li><i class="fas fa-mobile-alt"></i> <strong>Consistencia multiplataforma:</strong> identidad sólida en todos los canales: digital, físico y audiovisual.</li>
+          <li><i class="fas fa-chart-line"></i> <strong>Diferenciación competitiva:</strong> posicionamiento claro que distingue la marca frente a la competencia.</li>
+        </ul>
+      </div>
+      <div class="case-block">
+        <h3><i class="fas fa-rocket"></i> Estrategia de marca</h3>
+        <ul>
+          <li><i class="fas fa-brain"></i> Construimos desde el naming hasta la personalidad de marca.</li>
+          <li><i class="fas fa-chart-pie"></i> Investigación de mercado para conectar con el público objetivo.</li>
+          <li><i class="fas fa-hand-sparkles"></i> Branding emocional que fideliza y convierte.</li>
+          <li><i class="fas fa-globe"></i> Guías de marca para mantener la coherencia en cada punto de contacto.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 1.5rem; font-style: italic; color:#ff7a2f;"><i class="fas fa-heart"></i> En Humbrella Man, tu marca no solo se ve, se siente.</p>
+  `;
+
+  // Contenido de Audiovisual (el original mejorado)
+  const audiovisualHTML = `
+    <div class="case-grid">
+      <div class="case-block">
+        <h3><i class="fas fa-microchip"></i> Cómo funcionan</h3>
+        <ul>
+          <li><i class="fas fa-lightbulb"></i> <strong>Conceptualización creativa:</strong> partimos de una idea estratégica que conecta con la esencia de la marca y emociones del consumidor.</li>
+          <li><i class="fas fa-camera"></i> <strong>Producción profesional:</strong> recursos técnicos de alta calidad —cámaras, iluminación, edición digital— para resultados atractivos.</li>
+          <li><i class="fas fa-book-open"></i> <strong>Narrativa visual:</strong> cada pieza audiovisual cuenta una historia que transmite valores, beneficios y personalidad.</li>
+          <li><i class="fas fa-share-alt"></i> <strong>Adaptación multiplataforma:</strong> diseñado para TV, redes sociales, plataformas digitales y espacios físicos.</li>
+        </ul>
+      </div>
+      <div class="case-block">
+        <h3><i class="fas fa-chart-line"></i> Impacto en la propaganda</h3>
+        <ul>
+          <li><i class="fas fa-brain"></i> <strong>Mayor recordación:</strong> los mensajes audiovisuales generan impacto emocional más fuerte.</li>
+          <li><i class="fas fa-hand-sparkles"></i> <strong>Persuasión efectiva:</strong> combinación de imágenes, música y voz influye en la decisión de compra.</li>
+          <li><i class="fas fa-fire"></i> <strong>Viralidad:</strong> en la era digital, un buen spot puede convertirse en tendencia y multiplicar alcance.</li>
+          <li><i class="fas fa-flag-checkered"></i> <strong>Construcción de identidad:</strong> refuerzan la personalidad de la marca y la diferencian de la competencia.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 1.5rem;"><i class="fas fa-film"></i> El poder del movimiento: emociona, convence, perdura.</p>
+  `;
+
+  const dynamicSection = document.getElementById('dynamicCaseSection');
+  const dynamicTitle = document.getElementById('dynamicTitle');
+  const dynamicContent = document.getElementById('dynamicContent');
+  const closeBtn = document.getElementById('closeDynamicBtn');
+
+  function showCase(caseType) {
+    if (caseType === 'branding') {
+      dynamicTitle.innerHTML = '<i class="fas fa-palette"></i> Branding: Construcción de identidad';
+      dynamicContent.innerHTML = brandingHTML;
+    } else {
+      dynamicTitle.innerHTML = '<i class="fas fa-video"></i> Producciones Audiovisuales en la Publicidad';
+      dynamicContent.innerHTML = audiovisualHTML;
+    }
+    if (dynamicSection.style.display === 'none' || dynamicSection.style.display === '') {
+      dynamicSection.style.display = 'block';
+    }
+    dynamicSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Eventos para tarjetas de servicio
+  const cards = document.querySelectorAll('.service-card');
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      const caseValue = card.getAttribute('data-case');
+      if (caseValue === 'branding') {
+        showCase('branding');
+      } else {
+        showCase('audiovisual');  // tanto audiovisual como marketing digital y publicidad llevan al mismo contenido
+      }
+    });
+  });
+
+  // Botón "Explorar servicios" del Hero: muestra audiovisual por defecto (como preview destacado)
+  const explorarBtn = document.getElementById('explorarServiciosBtn');
+  if (explorarBtn) {
+    explorarBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      showCase('audiovisual');
+    });
+  }
+
+  // Cerrar sección dinámica
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      dynamicSection.style.display = 'none';
+    });
+  }
+
+  // Smooth scroll a secciones internas (evitar conflictos)
+  document.querySelectorAll('a[href^="#"]:not(#explorarServiciosBtn)').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === "#" || targetId === "") return;
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Formulario demo
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = form.querySelector('.btn-submit');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Enviando...';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje enviado!';
+        form.reset();
+        setTimeout(() => { btn.innerHTML = originalText; }, 2500);
+      }, 800);
+    });
+  }
+</script>
+</body>
+</html>
