@@ -1,0 +1,752 @@
+/* ============================================
+   HUMBRELLA MAN - RESPONSIVE.CSS
+   Estrategia Mobile First + Breakpoints
+   Versión: 2.0
+   ============================================ */
+
+/* ========== BREAKPOINTS GLOBALES ========== */
+/* 
+   Mobile S: 320px - 374px
+   Mobile M: 375px - 424px
+   Mobile L: 425px - 767px
+   Tablet: 768px - 1023px
+   Laptop: 1024px - 1279px
+   Desktop: 1280px - 1439px
+   Desktop L: 1440px+
+*/
+
+/* ========== RESET Y BASE RESPONSIVE ========== */
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Contenedor fluido */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* ========== MÓVILES PEQUEÑOS (320px - 374px) ========== */
+@media (max-width: 374px) {
+  :root {
+    --spacing-lg: 1.25rem;
+    --spacing-xl: 1.75rem;
+    --spacing-2xl: 2rem;
+    --grid-gap: 0.75rem;
+  }
+  
+  html {
+    font-size: 14px;
+  }
+  
+  /* Ajustes de tipografía */
+  h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  h3 {
+    font-size: 1.25rem !important;
+  }
+  
+  /* Ajustes de padding */
+  .grid-card {
+    padding: var(--spacing-md) !important;
+  }
+  
+  .hero-area {
+    padding: var(--spacing-xl) var(--spacing-md) !important;
+  }
+  
+  /* Botones más compactos */
+  .btn {
+    padding: 8px 16px !important;
+    font-size: 0.85rem !important;
+  }
+  
+  .btn-lg {
+    padding: 10px 20px !important;
+  }
+  
+  /* Navegación */
+  .nav-links {
+    gap: var(--spacing-sm) !important;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-links a {
+    font-size: 0.8rem !important;
+  }
+  
+  /* Formularios */
+  .form-input,
+  .form-textarea {
+    padding: 10px 14px !important;
+    font-size: 0.85rem !important;
+  }
+  
+  /* Modales */
+  .modal-content {
+    padding: var(--spacing-md) !important;
+  }
+  
+  /* Stats */
+  .stat-item {
+    min-width: 80px !important;
+    padding: var(--spacing-sm) !important;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* ========== MÓVILES ESTÁNDAR (375px - 424px) ========== */
+@media (min-width: 375px) and (max-width: 424px) {
+  :root {
+    --grid-gap: 0.875rem;
+  }
+  
+  html {
+    font-size: 15px;
+  }
+  
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  .grid-card {
+    padding: var(--spacing-lg) !important;
+  }
+  
+  .stats-container {
+    gap: var(--spacing-sm) !important;
+  }
+}
+
+/* ========== MÓVILES GRANDES (425px - 767px) ========== */
+@media (min-width: 425px) and (max-width: 767px) {
+  :root {
+    --grid-gap: 1rem;
+  }
+  
+  h1 {
+    font-size: 2.25rem !important;
+  }
+  
+  h2 {
+    font-size: 1.85rem !important;
+  }
+  
+  .grid-card {
+    padding: var(--spacing-lg) !important;
+  }
+  
+  /* Dos columnas en servicios */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--spacing-md) !important;
+  }
+  
+  .case-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ========== TODOS LOS MÓVILES (320px - 767px) ========== */
+@media (max-width: 767px) {
+  /* Layout principal */
+  .master-grid {
+    grid-template-areas: 
+      "header"
+      "hero"
+      "branding"
+      "servicios"
+      "destacado"
+      "audiovisual"
+      "contacto"
+      "footer" !important;
+    grid-template-columns: 1fr !important;
+    gap: var(--grid-gap);
+    padding: var(--grid-gap);
+  }
+  
+  /* Eliminar rotaciones en móviles */
+  .branding-area.grid-card,
+  .servicios-area.grid-card {
+    transform: none !important;
+  }
+  
+  .audiovisual-area.grid-card {
+    transform: none !important;
+  }
+  
+  /* Header */
+  .header-area {
+    flex-direction: column !important;
+    text-align: center;
+    position: relative !important;
+    top: 0 !important;
+    border-radius: var(--radius-lg) !important;
+  }
+  
+  .logo {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+  }
+  
+  /* Hero */
+  .hero-title {
+    font-size: 2rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem !important;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: var(--spacing-sm) !important;
+  }
+  
+  .hero-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Tarjetas */
+  .service-card {
+    padding: var(--spacing-md) !important;
+  }
+  
+  .service-icon {
+    font-size: 2rem !important;
+    width: 60px !important;
+    height: 60px !important;
+  }
+  
+  .service-title {
+    font-size: 1.1rem !important;
+  }
+  
+  /* Stats container */
+  .stats-container {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .stat-item {
+    width: 100%;
+  }
+  
+  /* Formulario de contacto */
+  .contact-card {
+    flex-direction: column !important;
+    padding: var(--spacing-lg) !important;
+  }
+  
+  .contact-info {
+    text-align: center;
+  }
+  
+  .contact-detail {
+    justify-content: center;
+  }
+  
+  /* Footer */
+  .social-icons {
+    gap: var(--spacing-md);
+  }
+  
+  .social-icons a {
+    font-size: 1.3rem;
+  }
+  
+  /* Componentes UI */
+  .tabs {
+    flex-direction: column;
+    border-bottom: none;
+  }
+  
+  .tab-btn {
+    width: 100%;
+    text-align: center;
+    padding: var(--spacing-sm);
+  }
+  
+  .tab-btn.active::after {
+    display: none;
+  }
+  
+  .tab-btn.active {
+    background: rgba(255, 122, 47, 0.1);
+    border-radius: var(--radius-md);
+  }
+  
+  /* Dropdown */
+  .dropdown-menu {
+    position: static;
+    margin-top: var(--spacing-xs);
+    width: 100%;
+  }
+  
+  /* Modal */
+  .modal-content {
+    width: 95%;
+    margin: var(--spacing-md);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .modal-footer {
+    flex-direction: column;
+  }
+  
+  .modal-footer .btn {
+    width: 100%;
+  }
+  
+  /* Accordion */
+  .accordion-header {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  /* Toast */
+  .toast-container {
+    bottom: var(--spacing-md);
+    right: var(--spacing-md);
+    left: var(--spacing-md);
+  }
+  
+  .toast {
+    width: 100%;
+  }
+  
+  /* Pagination */
+  .pagination {
+    gap: var(--spacing-xs);
+  }
+  
+  .page-item {
+    width: 35px;
+    height: 35px;
+  }
+  
+  /* Carousel */
+  .carousel-btn {
+    padding: var(--spacing-xs);
+  }
+  
+  /* Breadcrumb */
+  .breadcrumb {
+    flex-wrap: wrap;
+  }
+}
+
+/* ========== TABLETS (768px - 1023px) ========== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --grid-gap: 1.25rem;
+    --spacing-xl: 2.5rem;
+  }
+  
+  /* Layout tablet */
+  .master-grid {
+    grid-template-areas: 
+      "header header"
+      "hero hero"
+      "branding servicios"
+      "destacado destacado"
+      "audiovisual contacto"
+      "footer footer" !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+  
+  h1 {
+    font-size: 2.75rem !important;
+  }
+  
+  h2 {
+    font-size: 2.25rem !important;
+  }
+  
+  /* Header tablet */
+  .header-area {
+    padding: var(--spacing-sm) var(--spacing-lg) !important;
+  }
+  
+  .nav-links {
+    gap: var(--spacing-md);
+  }
+  
+  /* Grid de servicios */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--spacing-lg) !important;
+  }
+  
+  /* Stats en fila */
+  .stats-container {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  /* Case grid */
+  .case-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* Contacto en dos columnas */
+  .contact-card {
+    flex-direction: row !important;
+  }
+  
+  /* Tabs horizontales */
+  .tabs {
+    flex-wrap: wrap;
+  }
+}
+
+/* ========== LAPTOPS (1024px - 1279px) ========== */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  :root {
+    --grid-gap: 1.5rem;
+    --spacing-xl: 3rem;
+  }
+  
+  .master-grid {
+    max-width: 1200px;
+  }
+  
+  h1 {
+    font-size: 3rem !important;
+  }
+  
+  h2 {
+    font-size: 2.5rem !important;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* Ajuste de tarjetas */
+  .grid-card {
+    padding: var(--spacing-lg) !important;
+  }
+}
+
+/* ========== DESKTOP (1280px - 1439px) ========== */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .master-grid {
+    max-width: 1300px;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* ========== DESKTOP GRANDE (1440px+) ========== */
+@media (min-width: 1440px) {
+  .master-grid {
+    max-width: 1400px;
+  }
+  
+  :root {
+    --spacing-xl: 3.5rem;
+    --spacing-2xl: 5rem;
+  }
+  
+  h1 {
+    font-size: 4rem !important;
+  }
+  
+  h2 {
+    font-size: 3rem !important;
+  }
+  
+  .grid-card {
+    padding: var(--spacing-xl) !important;
+  }
+}
+
+/* ========== ORIENTACIÓN (Landscape en móviles) ========== */
+@media (max-width: 767px) and (orientation: landscape) {
+  .hero-area {
+    min-height: auto;
+    padding: var(--spacing-xl) !important;
+  }
+  
+  .modal-content {
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ========== PANTALLAS TÁCTILES ========== */
+@media (hover: none) and (pointer: coarse) {
+  /* Mejoras para táctil */
+  .btn,
+  .service-card,
+  .nav-links a,
+  .tab-btn,
+  .accordion-header {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .btn:active,
+  .service-card:active {
+    transform: scale(0.98);
+  }
+  
+  /* Tooltips en táctil */
+  .tooltip-text {
+    display: none;
+  }
+  
+  /* Hover effects reducidos */
+  .grid-card:hover {
+    transform: none;
+  }
+  
+  .service-card:hover::after {
+    opacity: 0;
+  }
+}
+
+/* ========== ALTA DENSIDAD (Retina) ========== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Imágenes más nítidas si las hubiera */
+  .avatar,
+  .hero-bg {
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ========== IMPRESIÓN ========== */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .header-area,
+  .hero-buttons,
+  .nav-links,
+  .social-icons,
+  .btn,
+  .modal,
+  .toast-container {
+    display: none !important;
+  }
+  
+  .grid-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  .master-grid {
+    display: block;
+  }
+  
+  .grid-card {
+    margin-bottom: var(--spacing-md);
+  }
+}
+
+/* ========== REDUCIR MOVIMIENTO (Accesibilidad) ========== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .grid-card:hover {
+    transform: none !important;
+  }
+  
+  .btn:hover {
+    transform: none !important;
+  }
+}
+
+/* ========== CONTRASTO ALTO (Accesibilidad) ========== */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-orange: #ff5e00;
+    --dark-bg: #000000;
+    --dark-card: #111111;
+  }
+  
+  .grid-card {
+    border: 2px solid white;
+  }
+  
+  .btn {
+    border: 2px solid white;
+  }
+}
+
+/* ========== UTILIDADES RESPONSIVE ========== */
+/* Ocultar/mostrar según dispositivo */
+.hide-mobile {
+  display: block;
+}
+
+.hide-tablet {
+  display: block;
+}
+
+.hide-desktop {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  .show-mobile {
+    display: block !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hide-tablet {
+    display: none !important;
+  }
+  
+  .show-tablet {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hide-desktop {
+    display: none !important;
+  }
+  
+  .show-desktop {
+    display: block !important;
+  }
+}
+
+/* Texto responsive */
+.text-responsive {
+  font-size: clamp(0.875rem, 4vw, 1.125rem);
+}
+
+.heading-responsive {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+}
+
+/* Padding responsive */
+.p-responsive {
+  padding: clamp(var(--spacing-md), 5vw, var(--spacing-xl));
+}
+
+.m-responsive {
+  margin: clamp(var(--spacing-sm), 3vw, var(--spacing-lg));
+}
+
+/* Gap responsive */
+.gap-responsive {
+  gap: clamp(var(--spacing-sm), 2vw, var(--spacing-lg));
+}
+
+/* Grid responsive automático */
+.grid-auto-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: clamp(var(--spacing-sm), 2vw, var(--spacing-lg));
+}
+
+/* Ancho responsivo para modales */
+.modal-responsive {
+  width: 90%;
+  max-width: min(500px, 90vw);
+}
+
+@media (min-width: 768px) {
+  .modal-responsive {
+    width: 80%;
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .modal-responsive {
+    width: 70%;
+    max-width: 800px;
+  }
+}
+
+/* Scroll suave solo en escritorio */
+@media (min-width: 1024px) {
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 280px) {
+  html {
+    font-size: 12px;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .btn {
+    padding: 6px 12px !important;
+  }
+}
+
+/* Soportes para notch y áreas seguras en móviles modernos */
+@supports (padding: max(0px)) {
+  .header-area {
+    padding-left: max(var(--spacing-lg), env(safe-area-inset-left));
+    padding-right: max(var(--spacing-lg), env(safe-area-inset-right));
+  }
+  
+  .hero-area {
+    padding-left: max(var(--spacing-xl), env(safe-area-inset-left));
+    padding-right: max(var(--spacing-xl), env(safe-area-inset-right));
+  }
+}
