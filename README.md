@@ -3,7 +3,8 @@
 Este proyecto corresponde a una **tarea académica** en la que se desarrolla una página web funcional para una agencia publicitaria ficticia llamada **Humbrella Man**.  
 El objetivo es aplicar conceptos básicos de **HTML y CSS** para construir una interfaz clara, moderna y responsiva.
 
-<img width="862" height="771" alt="image" src="https://github.com/user-attachments/assets/09024f84-223a-43e8-8540-d15dbea907e4" />
+<img width="857" height="890" alt="image" src="https://github.com/user-attachments/assets/37883d1a-c9bd-47f0-9ff6-a3d3b21002ef" />
+
 
 ---
 
