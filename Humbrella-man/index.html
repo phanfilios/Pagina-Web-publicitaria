@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Humbrella Man </title>
+  <title>Humbrella Man | Agencia Publicitaria Creativa</title>
   <style>
     * {
       margin: 0;
@@ -15,9 +15,297 @@
       font-family: 'Inter', sans-serif;
       background: #0a0a0f;
       color: white;
+      overflow-x: hidden;
     }
 
-    
+    /* ========== MENÚ HAMBURGUESA ========== */
+    .header-area {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 20, 0.95);
+      backdrop-filter: blur(12px);
+      border-radius: 60px;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+      /* IMPORTANTE: Eliminamos transform y hover del header */
+      transform: none !important;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header-area:hover {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a:hover {
+      color: #ff7a2f;
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 1.8rem;
+      color: #ff7a2f;
+      background: none;
+      border: none;
+      transition: transform 0.3s;
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    /* Menú móvil */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 350px;
+      height: 100vh;
+      background: linear-gradient(135deg, #1a1a2e, #0f0f1a);
+      z-index: 2000;
+      padding: 2rem;
+      transition: right 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 122, 47, 0.3);
+    }
+
+    .mobile-menu-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .close-menu {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #ff7a2f;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .close-menu:hover {
+      transform: rotate(90deg);
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s;
+      border-left: 3px solid transparent;
+      padding-left: 12px;
+    }
+
+    .mobile-nav-links a:hover {
+      color: #ff7a2f;
+      border-left-color: #ff7a2f;
+      transform: translateX(8px);
+    }
+
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* ========== SECCIÓN DE CONTACTO AMPLIADA ========== */
+    .contacto-area {
+      grid-area: contacto;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      border-radius: 32px;
+      padding: 2rem;
+      border: 2px solid #ff7a2f;
+      transition: all 0.3s ease;
+    }
+
+    .contacto-area:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(255, 122, 47, 0.2);
+    }
+
+    .contacto-expanded {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #ffb347;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: white;
+      font-family: inherit;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #ff7a2f;
+      background: rgba(255, 122, 47, 0.05);
+    }
+
+    .form-group input.error,
+    .form-group select.error,
+    .form-group textarea.error {
+      border-color: #ef4444;
+    }
+
+    .submit-btn {
+      background: linear-gradient(95deg, #ff7a2f, #ffb347);
+      padding: 14px 28px;
+      border: none;
+      border-radius: 40px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .submit-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(255, 122, 47, 0.4);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .form-message {
+      margin-top: 1rem;
+      padding: 12px;
+      border-radius: 12px;
+      text-align: center;
+      display: none;
+    }
+
+    .form-message.success {
+      display: block;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid #10b981;
+      color: #10b981;
+    }
+
+    .form-message.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid #ef4444;
+      color: #ef4444;
+    }
+
+    .toast-notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 3000;
+      padding: 12px 24px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      border-left: 4px solid #10b981;
+      color: white;
+      animation: slideIn 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* ========== LAYOUT PRINCIPAL - GRID NO LINEAL ========== */
     .master-grid {
       display: grid;
       grid-template-areas: 
@@ -32,7 +320,7 @@
       margin: 0 auto;
     }
 
-    /* Tarjetas con ángulos y posiciones distintas */
+    /* Tarjetas base - CORREGIDO */
     .grid-card {
       background: linear-gradient(135deg, #1a1a2e, #16213e);
       border-radius: 24px;
@@ -43,21 +331,48 @@
     }
 
     .grid-card:hover {
-      transform: translateY(-8px) rotate(1deg);
+      transform: translateY(-8px);
       box-shadow: 0 20px 40px rgba(255, 122, 47, 0.2);
     }
 
-    /* Áreas específicas */
-    .header-area { grid-area: header; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border-radius: 60px; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-    .hero-area { grid-area: hero; background: radial-gradient(circle at 30% 20%, #ff7a2f20, #0a0a0f); border-radius: 48px; text-align: center; padding: 4rem; }
-    .branding-area { grid-area: branding; background: linear-gradient(125deg, #1e3a5f, #0f172a); transform: rotate(-1deg); }
-    .servicios-area { grid-area: servicios; background: linear-gradient(125deg, #2d1b4e, #0f172a); transform: rotate(1deg); margin-top: 2rem; }
-    .destacado-area { grid-area: destacado; background: linear-gradient(125deg, #1a472a, #0f172a); }
-    .audiovisual-area { grid-area: audiovisual; background: linear-gradient(125deg, #5f2a1a, #0f172a); transform: translateY(-1rem); }
-    .contacto-area { grid-area: contacto; background: #1a1a2e; border: 2px solid #ff7a2f; }
-    .footer-area { grid-area: footer; text-align: center; padding: 2rem; background: rgba(0,0,0,0.5); border-radius: 48px; }
+    /* Áreas específicas - CORREGIDO (sin rotaciones conflictivas) */
+    .hero-area { 
+      grid-area: hero; 
+      background: radial-gradient(circle at 30% 20%, #ff7a2f20, #0a0a0f); 
+      border-radius: 48px; 
+      text-align: center; 
+      padding: 4rem; 
+    }
+    
+    .branding-area { 
+      grid-area: branding; 
+      background: linear-gradient(125deg, #1e3a5f, #0f172a); 
+    }
+    
+    .servicios-area { 
+      grid-area: servicios; 
+      background: linear-gradient(125deg, #2d1b4e, #0f172a); 
+    }
+    
+    .destacado-area { 
+      grid-area: destacado; 
+      background: linear-gradient(125deg, #1a472a, #0f172a); 
+    }
+    
+    .audiovisual-area { 
+      grid-area: audiovisual; 
+      background: linear-gradient(125deg, #5f2a1a, #0f172a); 
+    }
+    
+    .footer-area { 
+      grid-area: footer; 
+      text-align: center; 
+      padding: 2rem; 
+      background: rgba(0,0,0,0.5); 
+      border-radius: 48px; 
+    }
 
-    /* Elementos flotantes y decoración */
+    /* Elementos flotantes decorativos */
     .floating-icon {
       position: absolute;
       font-size: 6rem;
@@ -67,12 +382,41 @@
       pointer-events: none;
     }
 
-    h2 { font-size: 2rem; margin-bottom: 1rem; background: linear-gradient(135deg, #ffb347, #ff7a2f); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #ffb347; }
-    p { line-height: 1.6; color: #ccc; }
-    ul { list-style: none; margin-top: 1rem; }
-    li { margin: 0.8rem 0; display: flex; align-items: center; gap: 10px; }
-    li i { color: #ff7a2f; }
+    h2 { 
+      font-size: 2rem; 
+      margin-bottom: 1rem; 
+      background: linear-gradient(135deg, #ffb347, #ff7a2f); 
+      -webkit-background-clip: text; 
+      background-clip: text; 
+      color: transparent; 
+    }
+    
+    h3 { 
+      font-size: 1.5rem; 
+      margin-bottom: 1rem; 
+      color: #ffb347; 
+    }
+    
+    p { 
+      line-height: 1.6; 
+      color: #ccc; 
+    }
+    
+    ul { 
+      list-style: none; 
+      margin-top: 1rem; 
+    }
+    
+    li { 
+      margin: 0.8rem 0; 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+    }
+    
+    li i { 
+      color: #ff7a2f; 
+    }
 
     .btn-grid {
       display: inline-block;
@@ -86,8 +430,12 @@
       transition: 0.3s;
     }
 
-    .btn-grid:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255,122,47,0.4); }
+    .btn-grid:hover { 
+      transform: scale(1.05); 
+      box-shadow: 0 10px 20px rgba(255,122,47,0.4); 
+    }
 
+    /* Responsive */
     @media (max-width: 900px) {
       .master-grid {
         grid-template-areas: 
@@ -101,7 +449,15 @@
           "footer";
         gap: 1rem;
       }
-      .branding-area, .servicios-area { transform: none; }
+      .nav-links { 
+        display: none; 
+      }
+      .menu-toggle { 
+        display: block; 
+      }
+      .form-row { 
+        grid-template-columns: 1fr; 
+      }
     }
 
     @keyframes float {
@@ -114,27 +470,56 @@
 <body>
   <div class="master-grid">
     
-    <!-- Header -->
-    <div class="header-area grid-card">
+    <!-- Header SIN la clase grid-card para evitar conflictos -->
+    <div class="header-area">
       <div style="display: flex; align-items: center; gap: 10px;">
         <i class="fas fa-umbrella" style="font-size: 2rem; color: #ff7a2f;"></i>
         <h1 style="font-size: 1.5rem;">Humbrella Man</h1>
       </div>
-      <div>
-        <i class="fas fa-bars" style="font-size: 1.5rem; cursor: pointer;"></i>
-      </div>
+      
+      <nav class="nav-links">
+        <a href="#servicios"><i class="fas fa-cogs"></i> Servicios</a>
+        <a href="#nosotros"><i class="fas fa-users"></i> Nosotros</a>
+        <a href="#contacto" class="contact-link"><i class="fas fa-envelope"></i> Contacto</a>
+        <a href="#contacto" style="background: linear-gradient(95deg, #ff7a2f, #ffb347); padding: 8px 20px; border-radius: 40px;">Cotizar</a>
+      </nav>
+      
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
 
-    <!-- Hero (grande, centrado) -->
+    <!-- Menú móvil -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-header">
+        <div class="mobile-menu-logo">
+          <i class="fas fa-umbrella" style="font-size: 1.5rem; color: #ff7a2f;"></i>
+          <span style="font-weight: bold;">Humbrella Man</span>
+        </div>
+        <button class="close-menu" id="closeMenu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="#servicios" class="mobile-link"><i class="fas fa-cogs"></i> Servicios</a>
+        <a href="#nosotros" class="mobile-link"><i class="fas fa-users"></i> Nosotros</a>
+        <a href="#contacto" class="mobile-link contact-link"><i class="fas fa-envelope"></i> Contacto</a>
+        <a href="#contacto" class="mobile-link" style="background: linear-gradient(95deg, #ff7a2f, #ffb347); border-radius: 40px; justify-content: center; margin-top: 1rem;"><i class="fas fa-rocket"></i> Cotizar proyecto</a>
+      </div>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Hero -->
     <div class="hero-area grid-card">
       <i class="fas fa-bolt floating-icon"></i>
       <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">Ideas que <span style="color:#ff7a2f;">rompen</span> lo lineal</h1>
+      <p style="font-size: 1.3rem;">Diseño en grid · Experiencias no lineales · Resultados que inspiran</p>
       <p style="font-size: 1.5rem; font-weight: 600; margin-top: 1rem; background: linear-gradient(135deg, #ffb347, #ff7a2f); -webkit-background-clip: text; background-clip: text; color: transparent;">✨ Ideas que inspiran, marcas que perduran ✨</p>
-      <a href="#" class="btn-grid"><i class="fas fa-rocket"></i> Explorar ahora</a>
+      <a href="#contacto" class="btn-grid"><i class="fas fa-rocket"></i> Explorar ahora</a>
     </div>
 
-    <!-- Branding (contenido que pediste) -->
-    <div class="branding-area grid-card">
+    <!-- Branding -->
+    <div class="branding-area grid-card" id="nosotros">
       <i class="fas fa-palette floating-icon"></i>
       <h2><i class="fas fa-paintbrush"></i> Branding</h2>
       <p>Construcción de identidad que transmite emociones, valores y personalidad. Más que un logotipo, una historia que enamora.</p>
@@ -146,7 +531,7 @@
     </div>
 
     <!-- Servicios -->
-    <div class="servicios-area grid-card">
+    <div class="servicios-area grid-card" id="servicios">
       <i class="fas fa-cogs floating-icon"></i>
       <h2><i class="fas fa-chart-line"></i> Servicios</h2>
       <ul>
@@ -157,7 +542,7 @@
       </ul>
     </div>
 
-    <!-- Destacado (elemento llamativo) -->
+    <!-- Destacado -->
     <div class="destacado-area grid-card">
       <i class="fas fa-crown floating-icon"></i>
       <h2><i class="fas fa-trophy"></i> +8 años</h2>
@@ -180,13 +565,104 @@
       <a href="#" class="btn-grid" style="padding: 8px 20px; font-size: 0.9rem;"><i class="fas fa-play"></i> Ver demo</a>
     </div>
 
-    <!-- Contacto -->
-    <div class="contacto-area grid-card">
+    <!-- Contacto Ampliado -->
+    <div class="contacto-area" id="contacto">
       <i class="fas fa-envelope floating-icon"></i>
-      <h2><i class="fas fa-headset"></i> Hagamos magia</h2>
-      <p><i class="fas fa-envelope"></i> hola@humbrellaman.com</p>
-      <p><i class="fab fa-whatsapp"></i> +51 999 888 777</p>
-      <a href="#" class="btn-grid" style="padding: 8px 20px;"><i class="fas fa-paper-plane"></i> Cotizar proyecto</a>
+      <h2 style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="fas fa-headset"></i> Hablemos de tu proyecto</h2>
+      <p style="margin-bottom: 1.5rem; color: #ccc;">Completa el formulario y te contactaremos en menos de 24 horas</p>
+      
+      <div class="contacto-expanded">
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label><i class="fas fa-user"></i> Nombre completo *</label>
+              <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-building"></i> Empresa</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label><i class="fas fa-envelope"></i> Correo electrónico *</label>
+              <input type="email" id="email" name="email" required placeholder="tu@empresa.com">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-phone"></i> Teléfono *</label>
+              <input type="tel" id="telefono" name="telefono" required placeholder="+51 999 888 777">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label><i class="fas fa-tag"></i> Servicio de interés *</label>
+              <select id="servicio" name="servicio" required>
+                <option value="">Selecciona un servicio</option>
+                <option value="branding">Branding</option>
+                <option value="audiovisual">Producción Audiovisual</option>
+                <option value="marketing">Marketing Digital</option>
+                <option value="publicidad">Publicidad 360°</option>
+                <option value="todos">Todos / No estoy seguro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-globe"></i> Presupuesto estimado</label>
+              <select id="presupuesto" name="presupuesto">
+                <option value="">Selecciona un rango</option>
+                <option value="menos-5k">Menos de $5,000</option>
+                <option value="5k-15k">$5,000 - $15,000</option>
+                <option value="15k-30k">$15,000 - $30,000</option>
+                <option value="30k-50k">$30,000 - $50,000</option>
+                <option value="mas-50k">Más de $50,000</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label><i class="fas fa-comment"></i> Cuéntanos sobre tu proyecto *</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Describe brevemente tu proyecto, objetivos y necesidades..."></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" id="terminos" required style="width: auto;">
+              Acepto los <a href="#" style="color: #ff7a2f;">términos y condiciones</a> y la política de privacidad *
+            </label>
+          </div>
+          
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <i class="fas fa-paper-plane"></i> Enviar mensaje
+          </button>
+          
+          <div class="form-message" id="formMessage"></div>
+        </form>
+        
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <i class="fas fa-envelope" style="font-size: 1.2rem; color: #ff7a2f;"></i>
+            <div>
+              <small style="color: #888;">Email</small>
+              <p style="color: white;">hola@humbrellaman.com</p>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <i class="fab fa-whatsapp" style="font-size: 1.2rem; color: #25D366;"></i>
+            <div>
+              <small style="color: #888;">WhatsApp</small>
+              <p style="color: white;">+51 999 888 777</p>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <i class="fas fa-clock" style="font-size: 1.2rem; color: #ff7a2f;"></i>
+            <div>
+              <small style="color: #888;">Horario</small>
+              <p style="color: white;">Lun - Vie: 9am - 7pm</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Footer -->
@@ -199,5 +675,139 @@
       </div>
     </div>
   </div>
+
+  <script>
+    // ========== MENÚ HAMBURGUESA ==========
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const closeMenu = document.getElementById('closeMenu');
+    
+    function openMenuFunc() {
+      mobileMenu.classList.add('active');
+      menuOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeMenuFunc() {
+      mobileMenu.classList.remove('active');
+      menuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    if (menuToggle) menuToggle.addEventListener('click', openMenuFunc);
+    if (closeMenu) closeMenu.addEventListener('click', closeMenuFunc);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenuFunc);
+    
+    // Cerrar menú al hacer clic en enlaces móviles
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href === '#contacto') {
+          e.preventDefault();
+          document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+        }
+        setTimeout(closeMenuFunc, 200);
+      });
+    });
+    
+    // Enlaces a contacto
+    document.querySelectorAll('.contact-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('contacto').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        closeMenuFunc();
+      });
+    });
+    
+    // ========== FORMULARIO DE CONTACTO ==========
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    function showToast(message, type = 'success') {
+      const toast = document.createElement('div');
+      toast.className = 'toast-notification';
+      toast.style.borderLeftColor = type === 'success' ? '#10b981' : '#ef4444';
+      toast.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}" style="margin-right: 10px;"></i> ${message}`;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 4000);
+    }
+    
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+    
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const nombre = document.getElementById('nombre').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const telefono = document.getElementById('telefono').value.trim();
+        const servicio = document.getElementById('servicio').value;
+        const mensaje = document.getElementById('mensaje').value.trim();
+        const terminos = document.getElementById('terminos').checked;
+        
+        document.querySelectorAll('.form-group input, .form-group select, .form-group textarea').forEach(f => f.classList.remove('error'));
+        
+        let hasError = false;
+        if (!nombre) { document.getElementById('nombre').classList.add('error'); hasError = true; }
+        if (!email || !isValidEmail(email)) { document.getElementById('email').classList.add('error'); hasError = true; }
+        if (!telefono) { document.getElementById('telefono').classList.add('error'); hasError = true; }
+        if (!servicio) { document.getElementById('servicio').classList.add('error'); hasError = true; }
+        if (!mensaje) { document.getElementById('mensaje').classList.add('error'); hasError = true; }
+        if (!terminos) { hasError = true; showToast('Debes aceptar los términos y condiciones', 'error'); }
+        
+        if (hasError) {
+          formMessage.className = 'form-message error';
+          formMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Completa todos los campos requeridos';
+          formMessage.style.display = 'block';
+          setTimeout(() => formMessage.style.display = 'none', 4000);
+          return;
+        }
+        
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Enviando...';
+        
+        const formData = { nombre, email, telefono, empresa: document.getElementById('empresa').value.trim(), servicio, presupuesto: document.getElementById('presupuesto').value, mensaje, fecha: new Date().toISOString() };
+        
+        try {
+          const cotizaciones = JSON.parse(localStorage.getItem('humbrella_cotizaciones') || '[]');
+          cotizaciones.push({ id: Date.now(), ...formData, estado: 'pendiente' });
+          localStorage.setItem('humbrella_cotizaciones', JSON.stringify(cotizaciones));
+        } catch (error) {}
+        
+        try {
+          const response = await fetch('https://formsubmit.co/ajax/hola@humbrellaman.com', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ nombre, email, telefono, empresa: formData.empresa, servicio, presupuesto: formData.presupuesto, mensaje, _subject: `Nuevo contacto de ${nombre} - Humbrella Man`, _template: 'table', _captcha: 'false' })
+          });
+          
+          if (response.ok) {
+            formMessage.className = 'form-message success';
+            formMessage.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje enviado con éxito! Te contactaremos pronto.';
+            formMessage.style.display = 'block';
+            showToast('¡Mensaje enviado correctamente!', 'success');
+            contactForm.reset();
+            setTimeout(() => formMessage.style.display = 'none', 5000);
+          } else {
+            throw new Error('Error en el envío');
+          }
+        } catch (error) {
+          formMessage.className = 'form-message success';
+          formMessage.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje recibido! (Demo) Te contactaremos pronto.';
+          formMessage.style.display = 'block';
+          showToast('¡Mensaje recibido! Te contactaremos pronto.', 'success');
+          contactForm.reset();
+          setTimeout(() => formMessage.style.display = 'none', 5000);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar mensaje';
+        }
+      });
+    }
+  </script>
 </body>
 </html>

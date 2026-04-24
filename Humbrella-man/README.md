@@ -3,6 +3,9 @@
 ¡Bienvenido a la presentación de nuestro proyecto académico: Humbrella Man!
 Una agencia publicitaria ficticia diseñada para mostrar tus ideas con estilo, innovación y un toque moderno. 🚀✨
 
+
+![alt text](image.png)
+
 🎯 ¿De qué se trata este proyecto?
 
 Este proyecto corresponde a una **tarea académica** en la que se desarrolla una página web para una agencia publicitaria ficticia llamada **Humbrella Man**.  
