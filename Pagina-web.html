@@ -470,6 +470,13 @@
       border-color: #ff7a2f;
     }
 
+    .form-group input.error,
+    .form-group select.error,
+    .form-group textarea.error {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+    }
+
     .submit-btn {
       background: linear-gradient(95deg, #ff7a2f, #ffb347);
       padding: 8px;
@@ -767,6 +774,13 @@
       .menu-toggle { display: block; }
       .form-row { grid-template-columns: 1fr; }
       .video-wrapper iframe { height: 180px; }
+      .hero-area {
+        min-height: auto;
+        padding: 1.6rem;
+      }
+      .project-strip {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 480px) {
@@ -774,6 +788,9 @@
       .hero-area { padding: 1.25rem; }
       h2 { font-size: 1.1rem; }
       .stats-row { flex-direction: column; }
+      .hero-area h1 {
+        font-size: 2rem !important;
+      }
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -815,49 +832,53 @@
     <!-- ========== HERO ========== -->
     <div class="hero-area">
       <i class="fas fa-bolt floating-icon"></i>
-      <h1 style="font-size: 2rem; margin-bottom: 0.4rem;">Ideas que <span style="color:#ff7a2f;">rompen</span> lo lineal</h1>
-      <p style="font-size: 0.9rem; font-weight: 500; margin-bottom: 0.75rem;">✨ Ideas que inspiran, marcas que perduran ✨</p>
-      <div class="service-badge-group" style="justify-content: center;">
-        <span class="service-tag">🎯 Estrategia</span>
-        <span class="service-tag">🎨 Creatividad</span>
-        <span class="service-tag">📊 Resultados</span>
+      <h1>Ideas que hacen crecer <span style="color:#ff7a2f;">marcas memorables</span></h1>
+      <p>Branding, contenido y campañas para negocios que quieren verse mejor, comunicar con claridad y vender con más intención.</p>
+      <div class="service-badge-group">
+        <span class="service-tag"><i class="fas fa-bullseye"></i> Estrategia</span>
+        <span class="service-tag"><i class="fas fa-pen-nib"></i> Identidad</span>
+        <span class="service-tag"><i class="fas fa-chart-simple"></i> Resultados</span>
       </div>
-      <a href="#contacto" class="btn-primary" style="margin-top: 0.75rem;"><i class="fas fa-rocket"></i> Comienza tu proyecto</a>
+      <a href="#contacto" class="btn-primary" style="margin-top: 1rem;"><i class="fas fa-rocket"></i> Cotizar proyecto</a>
     </div>
 
-    <!-- ========== BRANDING (TAMAÑO MEDIANO) ========== -->
+    <!-- ========== BRANDING ========== -->
     <div class="branding-area grid-card" id="nosotros">
       <i class="fas fa-palette floating-icon"></i>
       <h2><i class="fas fa-paintbrush"></i> Branding</h2>
-      <p>Identidad que transmite emociones, valores y personalidad.</p>
+      <p>Diseñamos identidades visuales con criterio: logo, tono, sistema gráfico y una presencia coherente en cada punto de contacto.</p>
       <div class="service-badge-group">
-        <span class="service-tag">🎨 Identidad</span>
-        <span class="service-tag">📖 Storytelling</span>
-        <span class="service-tag">📱 Consistencia</span>
+        <span class="service-tag">Identidad</span>
+        <span class="service-tag">Storytelling</span>
+        <span class="service-tag">Manual de marca</span>
       </div>
       <ul>
-        <li><i class="fas fa-chart-line"></i> <strong>+45%</strong> reconocimiento</li>
-        <li><i class="fas fa-heart"></i> <strong>+200%</strong> engagement</li>
+        <li><i class="fas fa-chart-line"></i> <strong>+45%</strong> reconocimiento de marca</li>
+        <li><i class="fas fa-heart"></i> <strong>+200%</strong> interacción en canales clave</li>
       </ul>
-      <button class="btn-outline" style="margin-top: 0.4rem;" onclick="showServiceInfo('branding')">Saber más →</button>
+      <button class="btn-outline" onclick="showServiceInfo('branding')">Saber más <i class="fas fa-arrow-right"></i></button>
     </div>
 
-    <!-- ========== SERVICIOS (TAMAÑO MEDIANO) ========== -->
+    <!-- ========== SERVICIOS ========== -->
     <div class="servicios-area grid-card" id="servicios">
       <i class="fas fa-cogs floating-icon"></i>
-      <h2><i class="fas fa-chart-line"></i> Servicios</h2>
-      <p>Soluciones integrales para tu negocio</p>
-      <div class="service-badge-group">
-        <span class="service-tag">🎨 Branding</span>
-        <span class="service-tag">🎬 Audiovisual</span>
-        <span class="service-tag">📈 Marketing</span>
-        <span class="service-tag">📢 Publicidad</span>
+      <h2><i class="fas fa-layer-group"></i> Servicios</h2>
+      <p>Soluciones conectadas para que tu marca se vea bien, suene bien y convierta mejor.</p>
+      <div class="service-list">
+        <div class="service-item">
+          <i class="fas fa-pen-nib"></i>
+          <div><strong>Branding</strong><span>Identidad, narrativa y sistema visual.</span></div>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-video"></i>
+          <div><strong>Audiovisual</strong><span>Spots, reels, motion y contenido social.</span></div>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-chart-line"></i>
+          <div><strong>Marketing</strong><span>Campañas, pauta y medición de resultados.</span></div>
+        </div>
       </div>
-      <ul>
-        <li><i class="fas fa-check"></i> <strong>4 áreas</strong> de especialización</li>
-        <li><i class="fas fa-check"></i> <strong>100+</strong> campañas exitosas</li>
-      </ul>
-      <button class="btn-outline" style="margin-top: 0.4rem;" onclick="showAllServices()">Ver todos →</button>
+      <button class="btn-outline" onclick="showAllServices()">Ver todos <i class="fas fa-arrow-right"></i></button>
     </div>
 
     <!-- ========== DESTACADO ========== -->
@@ -882,27 +903,28 @@
           <div class="stat-label">premios</div>
         </div>
       </div>
-      <div class="service-badge-group" style="margin-top: 0.25rem;">
-        <span class="service-tag">🏆 Latinoamérica</span>
-        <span class="service-tag">🚀 Innovación</span>
+      <div class="project-strip">
+        <div class="project-tile"><strong>Lanzamiento retail</strong><span>Campaña 360</span></div>
+        <div class="project-tile"><strong>Marca gastronómica</strong><span>Identidad visual</span></div>
+        <div class="project-tile"><strong>Contenido social</strong><span>Reels y pauta</span></div>
       </div>
     </div>
 
-    <!-- ========== PRODUCCIÓN AUDIOVISUAL ========== -->
+    <!-- ========== PRODUCCION AUDIOVISUAL ========== -->
     <div class="audiovisual-area grid-card" id="audiovisualSection">
       <i class="fas fa-film floating-icon"></i>
       <h2><i class="fas fa-video"></i> Audiovisual</h2>
-      <p>Contenido visual de alto impacto</p>
+      <p>Contenido visual de alto impacto para redes, lanzamientos, anuncios y campañas de marca.</p>
       <div class="service-badge-group">
-        <span class="service-tag">🎬 Spots</span>
-        <span class="service-tag">📱 Reels</span>
-        <span class="service-tag">🎨 Motion</span>
+        <span class="service-tag">Spots</span>
+        <span class="service-tag">Reels</span>
+        <span class="service-tag">Motion</span>
       </div>
       <ul>
-        <li><i class="fas fa-chart-line"></i> <strong>+150%</strong> engagement</li>
-        <li><i class="fas fa-fire"></i> <strong>5M+</strong> vistas</li>
+        <li><i class="fas fa-chart-line"></i> <strong>+150%</strong> interacción en contenidos</li>
+        <li><i class="fas fa-fire"></i> <strong>5M+</strong> vistas acumuladas</li>
       </ul>
-      <button id="expandVideoBtn" class="btn-outline" style="margin-top: 0.4rem;">
+      <button id="expandVideoBtn" class="btn-outline">
         <i class="fas fa-play"></i> Ver demo
       </button>
       <div id="videoExpanded" class="video-expanded" style="display: none;">
@@ -917,12 +939,11 @@
         </div>
       </div>
     </div>
-
     <!-- ========== CONTACTO ========== -->
     <div class="contacto-area" id="contacto">
       <i class="fas fa-envelope floating-icon"></i>
       <h2><i class="fas fa-headset"></i> ¿Listo para crecer?</h2>
-      <p style="margin-bottom: 0.75rem;">Te contactaremos en <strong>menos de 24h</strong></p>
+      <p style="margin-bottom: 1rem;">Cuéntanos tu idea y te responderemos con una ruta clara en menos de 24 horas.</p>
       
       <form id="contactForm">
         <div class="form-row">
@@ -969,44 +990,42 @@
         </div>
         <div class="form-group">
           <label>Mensaje *</label>
-          <textarea id="mensaje" rows="2" placeholder="Cuéntanos sobre tu proyecto..." required></textarea>
+          <textarea id="mensaje" rows="3" placeholder="Cuéntanos sobre tu proyecto, objetivo o campaña..." required></textarea>
         </div>
         <div class="form-group">
-          <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
-            <input type="checkbox" id="terminos" required style="width: auto;">
-            Acepto <a href="#" style="color:#ff7a2f;">términos</a>
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: #d8dbe6;">
+            <input type="checkbox" id="terminos" required style="width: auto; min-height: auto;">
+            Acepto los términos de contacto
           </label>
         </div>
         <button type="submit" class="submit-btn" id="submitBtn">
-          <i class="fas fa-paper-plane"></i> Enviar
+          <i class="fas fa-paper-plane"></i> Enviar solicitud
         </button>
         <div class="form-message" id="formMessage"></div>
       </form>
       
-      <div style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      <div style="margin-top: 1.15rem; padding-top: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; color:#d8dbe6;">
         <div style="display: flex; align-items: center; gap: 6px;">
-          <i class="fas fa-envelope" style="color:#ff7a2f; font-size:0.8rem;"></i>
+          <i class="fas fa-envelope" style="color:#ff7a2f; font-size:0.85rem;"></i>
           <small>hola@humbrellaman.com</small>
         </div>
         <div style="display: flex; align-items: center; gap: 6px;">
-          <i class="fab fa-whatsapp" style="color:#25D366; font-size:0.8rem;"></i>
+          <i class="fab fa-whatsapp" style="color:#25D366; font-size:0.85rem;"></i>
           <small>+51 999 888 777</small>
         </div>
       </div>
     </div>
-
     <!-- ========== FOOTER ========== -->
     <div class="footer-area">
-      <p style="font-size: 0.7rem;">© 2026 Humbrella Man · Agencia Publicitaria Creativa</p>
-      <div style="margin-top: 0.5rem;">
-        <i class="fab fa-instagram" style="margin: 0 8px; cursor: pointer; font-size: 0.9rem;"></i>
-        <i class="fab fa-linkedin" style="margin: 0 8px; cursor: pointer; font-size: 0.9rem;"></i>
-        <i class="fab fa-behance" style="margin: 0 8px; cursor: pointer; font-size: 0.9rem;"></i>
-        <i class="fab fa-tiktok" style="margin: 0 8px; cursor: pointer; font-size: 0.9rem;"></i>
+      <p style="font-size: 0.82rem; color:#d8dbe6;">© 2026 Humbrella Man · Agencia Publicitaria Creativa</p>
+      <div style="margin-top: 0.65rem;">
+        <i class="fab fa-instagram" style="margin: 0 8px; cursor: pointer; font-size: 1rem;"></i>
+        <i class="fab fa-linkedin" style="margin: 0 8px; cursor: pointer; font-size: 1rem;"></i>
+        <i class="fab fa-behance" style="margin: 0 8px; cursor: pointer; font-size: 1rem;"></i>
+        <i class="fab fa-tiktok" style="margin: 0 8px; cursor: pointer; font-size: 1rem;"></i>
       </div>
     </div>
   </div>
-
   <script>
     // ========== MENÚ HAMBURGUESA ==========
     const menuToggle = document.getElementById('menuToggle');
@@ -1069,25 +1088,24 @@
     if (expandVideoBtn) expandVideoBtn.addEventListener('click', expandVideo);
     if (closeVideoBtn) closeVideoBtn.addEventListener('click', closeVideo);
     
-    // ========== FUNCIONES DE INFORMACIÓN ==========
+    // ========== FUNCIONES DE INFORMACION ==========
     function showServiceInfo(service) {
       const messages = {
-        branding: '🎨 Branding: Creamos identidades visuales únicas que conectan emocionalmente con tu audiencia.',
-        audiovisual: '🎬 Producción Audiovisual: Contenido de alto impacto para todas las plataformas.',
-        marketing: '📈 Marketing Digital: Estrategias basadas en datos para maximizar tu ROI.',
-        publicidad: '📢 Publicidad 360°: Campañas integradas que generan resultados medibles.'
+        branding: 'Branding: Creamos identidades visuales únicas que conectan con tu audiencia.',
+        audiovisual: 'Producción audiovisual: Contenido de alto impacto para redes, anuncios y lanzamientos.',
+        marketing: 'Marketing digital: Estrategias basadas en datos para mejorar alcance, conversión y retorno.',
+        publicidad: 'Publicidad 360°: Campañas integradas que mantienen una marca consistente en todos los canales.'
       };
       alert(messages[service] || 'Contáctanos para más información sobre este servicio.');
     }
     
     function showAllServices() {
-      alert('🚀 Nuestros Servicios:\n\n• Branding estratégico\n• Producción Audiovisual\n• Marketing Digital 360\n• Publicidad integrada\n\n¡Contáctanos para más información!');
+      alert('Nuestros servicios:\n\n• Branding estratégico\n• Producción audiovisual\n• Marketing digital 360\n• Publicidad integrada\n\nContáctanos para más información.');
     }
     
     window.showServiceInfo = showServiceInfo;
     window.showAllServices = showAllServices;
-    
-    // ========== FORMULARIO ==========
+        // ========== FORMULARIO ==========
     const contactForm = document.getElementById('contactForm');
     const formMessage = document.getElementById('formMessage');
     const submitBtn = document.getElementById('submitBtn');
@@ -1124,11 +1142,11 @@
         if (!telefono) { document.getElementById('telefono')?.classList.add('error'); hasError = true; }
         if (!servicio) { document.getElementById('servicio')?.classList.add('error'); hasError = true; }
         if (!mensaje) { document.getElementById('mensaje')?.classList.add('error'); hasError = true; }
-        if (!terminos) { hasError = true; showToast('Acepta los términos', 'error'); }
+        if (!terminos) { hasError = true; showToast('Acepta los términos de contacto', 'error'); }
         
         if (hasError) {
           formMessage.className = 'form-message error';
-          formMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Completa todos los campos';
+          formMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Completa todos los campos requeridos';
           formMessage.style.display = 'block';
           setTimeout(() => formMessage.style.display = 'none', 4000);
           return;
@@ -1157,7 +1175,7 @@
           setTimeout(() => formMessage.style.display = 'none', 5000);
         } finally {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar';
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar solicitud';
         }
       });
     }
