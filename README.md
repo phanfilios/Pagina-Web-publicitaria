@@ -1,5 +1,5 @@
 
-# 🎨 Humbrella Man - Agencia Publicitaria Creativa
+#  Humbrella Man - Agencia Publicitaria Creativa
 
 
 <img width="539" height="711" alt="image" src="https://github.com/user-attachments/assets/8c7fa83a-4ef2-4458-a6c3-d478d3bedb4f" />
@@ -29,11 +29,11 @@
 
 ---
 
-## 📖 Descripción
+##  Descripción
 
 **Humbrella Man** es un sitio web moderno para una agencia publicitaria creativa. Presenta un diseño innovador con **grid layout no lineal**, menú de navegación responsive, sección de contacto interactiva con envío de correos, y un sistema de video expandible para mostrar el showreel de la agencia.
 
-### 🎯 Propósito
+### Propósito
 - Mostrar los servicios de la agencia (Branding, Producción Audiovisual, Marketing Digital, Publicidad 360°)
 - Generar leads a través del formulario de contacto
 - Transmitir la identidad visual y el expertise de la agencia
@@ -41,33 +41,33 @@
 
 ---
 
-## ✨ Características
+##  Características
 
-### 🎨 Diseño y UI/UX
+###  Diseño y UI/UX
 - **Grid Layout no lineal** - Disposición única de elementos que rompe la monotonía
 - **Diseño 100% responsive** - Adaptación perfecta a móviles, tablets y desktop
 - **Efectos hover** - Animaciones sutiles que mejoran la interactividad
 - **Tarjetas con gradientes** - Estilo moderno y atractivo
 - **Iconos flotantes decorativos** - Toque visual distintivo
 
-### 🧭 Navegación
+###  Navegación
 - **Menú hamburguesa** - Para dispositivos móviles con animación suave
 - **Scroll suave** - Navegación fluida entre secciones
 - **Enlaces ancla** - Acceso directo a secciones específicas
 - **Header sticky** - Siempe visible al hacer scroll
 
-### 🎬 Video Expandible
+###  Video Expandible
 - **Botón "Ver demo"** - Expande una sección con video de YouTube
 - **Cierre automático** - Detiene la reproducción al cerrar
 - **Animación de expansión** - Transición suave
 
-### 📝 Formulario de Contacto
+###  Formulario de Contacto
 - **Validación en tiempo real** - Campos requeridos, email y teléfono válidos
 - **Mensajes toast** - Notificaciones emergentes para feedback
 - **Almacenamiento local** - Guarda cotizaciones en localStorage
 - **Envío a FormSubmit.co** - Servicio gratuito para recibir correos
 
-### 📊 Datos y Estadísticas
+###  Datos y Estadísticas
 - **Métricas clave** - 8+ años, 150+ proyectos, 98% satisfacción, 12 premios
 - **Badges informativos** - Etiquetas visuales por categoría
 - **Call to Action** - Botones estratégicamente ubicados
