@@ -2,7 +2,8 @@
 # 🎨 Humbrella Man - Agencia Publicitaria Creativa
 
 
-<img width="1137" height="965" alt="image" src="https://github.com/user-attachments/assets/5f2536b9-3605-4652-ad2d-67d52177bb30" />
+<img width="539" height="711" alt="image" src="https://github.com/user-attachments/assets/8c7fa83a-4ef2-4458-a6c3-d478d3bedb4f" />
+
 
 
 
