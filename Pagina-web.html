@@ -171,26 +171,28 @@
       visibility: visible;
     }
 
-    /* ========== LAYOUT PRINCIPAL ========== */
-    .master-grid {
-      display: grid;
-      grid-template-areas: 
-        "header header header header"
-        "hero hero hero hero"
-        "branding servicios destacado destacado"
-        "audiovisual audiovisual contacto contacto"
-        "footer footer footer footer";
-      gap: 1.25rem;
-      padding: 1.25rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+    /* ========== LAYOUT PRINCIPAL - CON TARJETAS MEDIANAS ========== */
+    /* Nueva configuración para que branding y servicios sean más angostos */
+  .master-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr 1.2fr;  /* ← NUEVO: columnas proporcionadas */
+  grid-template-areas: 
+    "header header header header"
+    "hero hero hero hero"
+    "branding servicios destacado destacado"
+    "audiovisual audiovisual contacto contacto"
+    "footer footer footer footer";
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
 
-    /* ========== TARJETAS ========== */
+    /* ========== TARJETAS COMPACTAS ========== */
     .grid-card {
       background: linear-gradient(135deg, #1a1a2e, #16213e);
-      border-radius: 20px;
-      padding: 1.25rem;
+      border-radius: 16px;
+      padding: 0.875rem;
       transition: transform 0.3s, box-shadow 0.3s;
       position: relative;
       overflow: hidden;
@@ -199,91 +201,115 @@
     }
 
     .grid-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 30px rgba(255, 122, 47, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(255, 122, 47, 0.12);
     }
 
     .hero-area { 
       grid-area: hero; 
       background: radial-gradient(circle at 30% 20%, #ff7a2f20, #0a0a0f); 
-      border-radius: 32px; 
+      border-radius: 28px; 
       text-align: center; 
-      padding: 3rem 2rem; 
+      padding: 2rem; 
     }
     
-    .branding-area { grid-area: branding; background: linear-gradient(125deg, #1e3a5f, #0f172a); }
-    .servicios-area { grid-area: servicios; background: linear-gradient(125deg, #2d1b4e, #0f172a); }
-    .destacado-area { grid-area: destacado; background: linear-gradient(125deg, #1a472a, #0f172a); }
-    .audiovisual-area { grid-area: audiovisual; background: linear-gradient(125deg, #5f2a1a, #0f172a); }
+    .branding-area { 
+      grid-area: branding; 
+      background: linear-gradient(125deg, #1e3a5f, #0f172a);
+      max-width: 100%;
+    }
+    
+    .servicios-area { 
+      grid-area: servicios; 
+      background: linear-gradient(125deg, #2d1b4e, #0f172a);
+      max-width: 100%;
+    }
+    
+    .destacado-area { 
+      grid-area: destacado; 
+      background: linear-gradient(125deg, #1a472a, #0f172a); 
+    }
+    
+    .audiovisual-area { 
+      grid-area: audiovisual; 
+      background: linear-gradient(125deg, #5f2a1a, #0f172a); 
+    }
     
     .contacto-area {
       grid-area: contacto;
       background: linear-gradient(135deg, #1a1a2e, #16213e);
-      border-radius: 24px;
-      padding: 1.5rem;
+      border-radius: 20px;
+      padding: 1.25rem;
       border: 2px solid #ff7a2f;
     }
 
     .footer-area { 
       grid-area: footer; 
       text-align: center; 
-      padding: 1.5rem; 
+      padding: 1rem; 
       background: rgba(0,0,0,0.4); 
-      border-radius: 32px; 
+      border-radius: 28px; 
     }
 
     /* Elementos flotantes */
     .floating-icon {
       position: absolute;
-      font-size: 4rem;
+      font-size: 3.5rem;
       opacity: 0.06;
-      bottom: -15px;
-      right: -15px;
+      bottom: -12px;
+      right: -12px;
       pointer-events: none;
     }
 
-    /* Tipografía */
+    /* Tipografía COMPACTADA */
     h2 { 
-      font-size: 1.5rem; 
-      margin-bottom: 0.75rem; 
+      font-size: 1.2rem; 
+      margin-bottom: 0.4rem; 
       background: linear-gradient(135deg, #ffb347, #ff7a2f); 
       -webkit-background-clip: text; 
       background-clip: text; 
       color: transparent; 
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
     
     h3 { 
-      font-size: 1.1rem; 
-      margin-bottom: 0.5rem; 
+      font-size: 1rem; 
+      margin-bottom: 0.3rem; 
       color: #ffb347; 
     }
     
     p { 
-      line-height: 1.5; 
+      line-height: 1.4; 
       color: #ccc; 
-      font-size: 0.85rem;
+      font-size: 0.75rem;
+      margin-bottom: 0.25rem;
     }
     
-    ul { list-style: none; margin-top: 0.5rem; }
+    ul { 
+      list-style: none; 
+      margin-top: 0.25rem; 
+    }
     
     li { 
-      margin: 0.4rem 0; 
+      margin: 0.2rem 0; 
       display: flex; 
       align-items: center; 
-      gap: 8px; 
-      font-size: 0.8rem;
+      gap: 6px; 
+      font-size: 0.7rem;
     }
     
-    li i { color: #ff7a2f; font-size: 0.75rem; }
+    li i { 
+      color: #ff7a2f; 
+      font-size: 0.65rem;
+    }
 
     /* Botones */
     .btn-primary, .btn-grid {
       display: inline-block;
       background: linear-gradient(95deg, #ff7a2f, #ffb347);
-      padding: 10px 24px;
+      padding: 8px 18px;
       border-radius: 40px;
       text-decoration: none;
       color: white;
@@ -292,7 +318,7 @@
       border: none;
       cursor: pointer;
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
 
     .btn-primary:hover, .btn-grid:hover { 
@@ -304,23 +330,25 @@
       background: transparent;
       border: 1px solid #ff7a2f;
       color: #ff7a2f;
-      padding: 8px 20px;
+      padding: 5px 14px;
       border-radius: 40px;
       cursor: pointer;
       font-weight: 500;
+      font-size: 0.7rem;
       transition: all 0.3s;
+      width: fit-content;
     }
 
     .btn-outline:hover {
       background: rgba(255, 122, 47, 0.1);
     }
 
-    /* ========== SECCIÓN DE ESTADÍSTICAS (NUEVA) ========== */
+    /* ========== SECCIÓN DE ESTADÍSTICAS ========== */
     .stats-row {
       display: flex;
       justify-content: space-between;
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
       flex-wrap: wrap;
     }
 
@@ -328,52 +356,52 @@
       text-align: center;
       flex: 1;
       background: rgba(255, 255, 255, 0.03);
-      border-radius: 16px;
-      padding: 0.75rem;
+      border-radius: 12px;
+      padding: 0.4rem;
     }
 
     .stat-number {
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       font-weight: 800;
       color: #ff7a2f;
     }
 
     .stat-label {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       color: #888;
     }
 
-    /* ========== BADGES DE SERVICIOS ========== */
+    /* ========== BADGES ========== */
     .service-badge-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin: 0.75rem 0;
+      gap: 0.3rem;
+      margin: 0.4rem 0;
     }
 
     .service-tag {
-      background: rgba(255, 122, 47, 0.15);
-      padding: 4px 12px;
+      background: rgba(255, 122, 47, 0.12);
+      padding: 2px 8px;
       border-radius: 40px;
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       color: #ffb347;
     }
 
-    /* ========== VIDEO EXPANDIBLE ========== */
+    /* ========== VIDEO ========== */
     .video-expanded {
-      margin-top: 1rem;
+      margin-top: 0.75rem;
       animation: expandVideo 0.3s ease;
     }
 
     @keyframes expandVideo {
-      from { opacity: 0; transform: translateY(-10px); }
+      from { opacity: 0; transform: translateY(-8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .video-container {
       background: rgba(0, 0, 0, 0.5);
-      border-radius: 16px;
-      padding: 1rem;
+      border-radius: 12px;
+      padding: 0.75rem;
       border: 1px solid rgba(255, 122, 47, 0.3);
     }
 
@@ -381,7 +409,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       flex-wrap: wrap;
     }
 
@@ -389,50 +417,50 @@
       background: rgba(255, 255, 255, 0.1);
       border: none;
       color: #ff7a2f;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       cursor: pointer;
-      padding: 4px 12px;
+      padding: 3px 10px;
       border-radius: 40px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
     }
 
     .video-wrapper iframe {
       width: 100%;
-      height: 260px;
-      border-radius: 12px;
+      height: 220px;
+      border-radius: 10px;
     }
 
-    /* ========== FORMULARIO ========== */
+    /* ========== FORMULARIO COMPACTADO ========== */
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
     }
 
-    .form-group { margin-bottom: 0.75rem; }
+    .form-group { margin-bottom: 0.6rem; }
 
     .form-group label {
       display: block;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.2rem;
       color: #ffb347;
       font-weight: 500;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
     }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
       width: 100%;
-      padding: 8px 12px;
+      padding: 6px 10px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
+      border-radius: 8px;
       color: white;
       font-family: inherit;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
     }
 
     .form-group input:focus,
@@ -444,23 +472,23 @@
 
     .submit-btn {
       background: linear-gradient(95deg, #ff7a2f, #ffb347);
-      padding: 10px;
+      padding: 8px;
       border: none;
       border-radius: 40px;
       color: white;
       font-weight: bold;
       cursor: pointer;
       width: 100%;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
 
     .form-message {
-      margin-top: 0.75rem;
-      padding: 8px;
-      border-radius: 10px;
+      margin-top: 0.6rem;
+      padding: 6px;
+      border-radius: 8px;
       text-align: center;
       display: none;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
     }
 
     .form-message.success {
@@ -482,12 +510,12 @@
       bottom: 20px;
       right: 20px;
       z-index: 3000;
-      padding: 10px 20px;
-      border-radius: 10px;
+      padding: 8px 16px;
+      border-radius: 8px;
       background: #1a1a2e;
       border-left: 4px solid #10b981;
       color: white;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       animation: slideIn 0.3s ease;
     }
 
@@ -496,9 +524,234 @@
       to { transform: translateX(0); opacity: 1; }
     }
 
+    /* ========== UI REFRESH ========== */
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(255, 122, 47, 0.14), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.10), transparent 28%),
+        #090a10;
+    }
+
+    .header-area {
+      border-radius: 24px;
+      padding: 0.9rem 1.25rem;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    .master-grid {
+      grid-template-columns: minmax(230px, 0.9fr) minmax(300px, 1.15fr) minmax(0, 1.18fr) minmax(0, 1.18fr);
+      gap: 1.25rem;
+      max-width: 1320px;
+    }
+
+    .grid-card,
+    .contacto-area {
+      border-radius: 16px;
+      padding: 1.15rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+    }
+
+    .hero-area {
+      min-height: 300px;
+      text-align: left;
+      padding: 2.4rem;
+      border: 1px solid rgba(255, 122, 47, 0.18);
+      background:
+        linear-gradient(135deg, rgba(255, 122, 47, 0.18), rgba(255, 255, 255, 0.03)),
+        radial-gradient(circle at 80% 28%, rgba(255, 179, 71, 0.20), transparent 32%),
+        #0d111b;
+    }
+
+    .hero-area h1 {
+      max-width: 760px;
+      font-size: clamp(2.2rem, 4vw, 4.4rem) !important;
+      line-height: 0.98;
+      margin-bottom: 0.9rem !important;
+    }
+
+    .hero-area p {
+      max-width: 620px;
+      font-size: 1rem !important;
+      color: #f2f2f2;
+    }
+
+    h2 {
+      font-size: 1.28rem;
+      margin-bottom: 0.65rem;
+    }
+
+    p {
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+
+    li {
+      font-size: 0.82rem;
+      margin: 0.35rem 0;
+    }
+
+    .service-tag {
+      border-radius: 999px;
+      padding: 0.34rem 0.65rem;
+      font-size: 0.72rem;
+      background: rgba(255, 122, 47, 0.14);
+      border: 1px solid rgba(255, 179, 71, 0.14);
+    }
+
+    .btn-primary,
+    .btn-grid,
+    .btn-outline,
+    .submit-btn,
+    .btn-cotizar {
+      border-radius: 999px;
+    }
+
+    .btn-primary {
+      padding: 0.78rem 1.3rem;
+      font-size: 0.9rem;
+    }
+
+    .btn-outline {
+      padding: 0.58rem 0.95rem;
+      font-size: 0.78rem;
+    }
+
+    .branding-area,
+    .servicios-area {
+      min-height: 245px;
+    }
+
+    .branding-area .btn-outline,
+    .servicios-area .btn-outline {
+      margin-top: auto !important;
+    }
+
+    .servicios-area .service-badge-group {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .servicios-area .service-tag {
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .service-list {
+      display: grid;
+      gap: 0.55rem;
+      margin: 0.7rem 0;
+    }
+
+    .service-item {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 0.65rem;
+      align-items: start;
+      padding: 0.62rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .service-item i {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: #ffb347;
+      background: rgba(255, 122, 47, 0.14);
+    }
+
+    .service-item strong {
+      display: block;
+      color: #fff;
+      font-size: 0.84rem;
+      margin-bottom: 0.12rem;
+    }
+
+    .service-item span {
+      color: #b8bbc7;
+      font-size: 0.72rem;
+      line-height: 1.35;
+    }
+
+    .project-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin-top: 0.8rem;
+    }
+
+    .project-tile {
+      min-height: 92px;
+      border-radius: 14px;
+      padding: 0.72rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      background:
+        linear-gradient(150deg, rgba(255, 122, 47, 0.18), rgba(16, 185, 129, 0.12)),
+        rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .project-tile strong {
+      color: #fff;
+      font-size: 0.8rem;
+    }
+
+    .project-tile span {
+      color: #b8bbc7;
+      font-size: 0.68rem;
+      margin-top: 0.16rem;
+    }
+
+    .contacto-area {
+      border-color: rgba(255, 122, 47, 0.36);
+      background:
+        linear-gradient(135deg, rgba(255, 122, 47, 0.08), rgba(255, 255, 255, 0.03)),
+        #111525;
+    }
+
+    .form-row {
+      gap: 0.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .form-group label {
+      font-size: 0.78rem;
+      margin-bottom: 0.32rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      min-height: 40px;
+      padding: 0.65rem 0.78rem;
+      border-radius: 10px;
+      font-size: 0.84rem;
+    }
+
+    .form-group textarea {
+      min-height: 92px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-area {
+      border-radius: 18px;
+    }
+
     /* ========== RESPONSIVE ========== */
     @media (max-width: 900px) {
       .master-grid {
+        grid-template-columns: 1fr;
         grid-template-areas: 
           "header"
           "hero"
@@ -508,18 +761,18 @@
           "audiovisual"
           "contacto"
           "footer";
-        gap: 1rem;
+        gap: 0.875rem;
       }
       .nav-links { display: none; }
       .menu-toggle { display: block; }
       .form-row { grid-template-columns: 1fr; }
-      .video-wrapper iframe { height: 200px; }
+      .video-wrapper iframe { height: 180px; }
     }
 
     @media (max-width: 480px) {
-      .grid-card { padding: 1rem; }
-      .hero-area { padding: 1.5rem; }
-      h2 { font-size: 1.3rem; }
+      .grid-card { padding: 0.75rem; }
+      .hero-area { padding: 1.25rem; }
+      h2 { font-size: 1.1rem; }
       .stats-row { flex-direction: column; }
     }
   </style>
@@ -554,7 +807,7 @@
         <a href="#servicios"><i class="fas fa-cogs"></i> Servicios</a>
         <a href="#nosotros"><i class="fas fa-users"></i> Nosotros</a>
         <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
-        <a href="#contacto" style="background: linear-gradient(95deg, #ff7a2f, #ffb347); border-radius: 40px; justify-content: center; padding: 10px;"><i class="fas fa-rocket"></i> Cotizar proyecto</a>
+        <a href="#contacto" style="background: linear-gradient(95deg, #ff7a2f, #ffb347); border-radius: 40px; justify-content: center; padding: 8px;"><i class="fas fa-rocket"></i> Cotizar proyecto</a>
       </div>
     </div>
     <div class="menu-overlay" id="menuOverlay"></div>
@@ -562,45 +815,49 @@
     <!-- ========== HERO ========== -->
     <div class="hero-area">
       <i class="fas fa-bolt floating-icon"></i>
-      <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Ideas que <span style="color:#ff7a2f;">rompen</span> lo lineal</h1>
-      <p style="font-size: 1.1rem; font-weight: 500; margin-bottom: 1rem;">✨ Ideas que inspiran, marcas que perduran ✨</p>
+      <h1 style="font-size: 2rem; margin-bottom: 0.4rem;">Ideas que <span style="color:#ff7a2f;">rompen</span> lo lineal</h1>
+      <p style="font-size: 0.9rem; font-weight: 500; margin-bottom: 0.75rem;">✨ Ideas que inspiran, marcas que perduran ✨</p>
       <div class="service-badge-group" style="justify-content: center;">
         <span class="service-tag">🎯 Estrategia</span>
         <span class="service-tag">🎨 Creatividad</span>
         <span class="service-tag">📊 Resultados</span>
       </div>
-      <a href="#contacto" class="btn-primary" style="margin-top: 1rem;"><i class="fas fa-rocket"></i> Comienza tu proyecto</a>
+      <a href="#contacto" class="btn-primary" style="margin-top: 0.75rem;"><i class="fas fa-rocket"></i> Comienza tu proyecto</a>
     </div>
 
-    <!-- ========== BRANDING ========== -->
+    <!-- ========== BRANDING (TAMAÑO MEDIANO) ========== -->
     <div class="branding-area grid-card" id="nosotros">
       <i class="fas fa-palette floating-icon"></i>
       <h2><i class="fas fa-paintbrush"></i> Branding</h2>
-      <p>Construimos identidades de marca que transmiten emociones, valores y personalidad. Más que un logotipo, una historia que conecta.</p>
+      <p>Identidad que transmite emociones, valores y personalidad.</p>
       <div class="service-badge-group">
-        <span class="service-tag">🎨 Identidad visual</span>
+        <span class="service-tag">🎨 Identidad</span>
         <span class="service-tag">📖 Storytelling</span>
         <span class="service-tag">📱 Consistencia</span>
       </div>
       <ul>
-        <li><i class="fas fa-check-circle"></i> <strong>+45%</strong> reconocimiento de marca</li>
-        <li><i class="fas fa-check-circle"></i> <strong>+200%</strong> engagement</li>
+        <li><i class="fas fa-chart-line"></i> <strong>+45%</strong> reconocimiento</li>
+        <li><i class="fas fa-heart"></i> <strong>+200%</strong> engagement</li>
       </ul>
-      <button class="btn-outline" style="margin-top: 0.75rem; width: fit-content;" onclick="showServiceInfo('branding')">Saber más →</button>
+      <button class="btn-outline" style="margin-top: 0.4rem;" onclick="showServiceInfo('branding')">Saber más →</button>
     </div>
 
-    <!-- ========== SERVICIOS ========== -->
+    <!-- ========== SERVICIOS (TAMAÑO MEDIANO) ========== -->
     <div class="servicios-area grid-card" id="servicios">
       <i class="fas fa-cogs floating-icon"></i>
       <h2><i class="fas fa-chart-line"></i> Servicios</h2>
-      <p>Soluciones integrales para potenciar tu negocio</p>
+      <p>Soluciones integrales para tu negocio</p>
+      <div class="service-badge-group">
+        <span class="service-tag">🎨 Branding</span>
+        <span class="service-tag">🎬 Audiovisual</span>
+        <span class="service-tag">📈 Marketing</span>
+        <span class="service-tag">📢 Publicidad</span>
+      </div>
       <ul>
-        <li><i class="fas fa-palette"></i> <strong>Branding estratégico</strong><br><small>Identidad y posicionamiento</small></li>
-        <li><i class="fas fa-video"></i> <strong>Producción Audiovisual</strong><br><small>Spots y contenido digital</small></li>
-        <li><i class="fas fa-chart-simple"></i> <strong>Marketing Digital 360</strong><br><small>SEO, SEM, Social Media</small></li>
-        <li><i class="fas fa-bullhorn"></i> <strong>Publicidad integrada</strong><br><small>Campañas omnicanal</small></li>
+        <li><i class="fas fa-check"></i> <strong>4 áreas</strong> de especialización</li>
+        <li><i class="fas fa-check"></i> <strong>100+</strong> campañas exitosas</li>
       </ul>
-      <button class="btn-outline" style="margin-top: 0.5rem; width: fit-content;" onclick="showAllServices()">Ver todos →</button>
+      <button class="btn-outline" style="margin-top: 0.4rem;" onclick="showAllServices()">Ver todos →</button>
     </div>
 
     <!-- ========== DESTACADO ========== -->
@@ -610,49 +867,48 @@
       <div class="stats-row">
         <div class="stat-item-compact">
           <div class="stat-number">8+</div>
-          <div class="stat-label">años de experiencia</div>
+          <div class="stat-label">años</div>
         </div>
         <div class="stat-item-compact">
           <div class="stat-number">150+</div>
-          <div class="stat-label">proyectos exitosos</div>
+          <div class="stat-label">proyectos</div>
         </div>
         <div class="stat-item-compact">
           <div class="stat-number">98%</div>
-          <div class="stat-label">clientes satisfechos</div>
+          <div class="stat-label">satisfacción</div>
         </div>
         <div class="stat-item-compact">
           <div class="stat-number">12</div>
-          <div class="stat-label">premios creativos</div>
+          <div class="stat-label">premios</div>
         </div>
       </div>
-      <div class="service-badge-group" style="margin-top: 0.5rem;">
+      <div class="service-badge-group" style="margin-top: 0.25rem;">
         <span class="service-tag">🏆 Latinoamérica</span>
         <span class="service-tag">🚀 Innovación</span>
-        <span class="service-tag">⭐ Excelencia</span>
       </div>
     </div>
 
     <!-- ========== PRODUCCIÓN AUDIOVISUAL ========== -->
     <div class="audiovisual-area grid-card" id="audiovisualSection">
       <i class="fas fa-film floating-icon"></i>
-      <h2><i class="fas fa-video"></i> Producción Audiovisual</h2>
-      <p>Contenido visual de alto impacto que emociona y conecta con tu audiencia.</p>
+      <h2><i class="fas fa-video"></i> Audiovisual</h2>
+      <p>Contenido visual de alto impacto</p>
       <div class="service-badge-group">
-        <span class="service-tag">🎬 Spots publicitarios</span>
-        <span class="service-tag">📱 Reels/TikTok</span>
-        <span class="service-tag">🎨 Motion graphics</span>
+        <span class="service-tag">🎬 Spots</span>
+        <span class="service-tag">📱 Reels</span>
+        <span class="service-tag">🎨 Motion</span>
       </div>
       <ul>
-        <li><i class="fas fa-chart-line"></i> <strong>+150%</strong> engagement en redes</li>
-        <li><i class="fas fa-fire"></i> <strong>5M+</strong> vistas virales</li>
+        <li><i class="fas fa-chart-line"></i> <strong>+150%</strong> engagement</li>
+        <li><i class="fas fa-fire"></i> <strong>5M+</strong> vistas</li>
       </ul>
-      <button id="expandVideoBtn" class="btn-outline" style="margin-top: 0.5rem; width: fit-content;">
+      <button id="expandVideoBtn" class="btn-outline" style="margin-top: 0.4rem;">
         <i class="fas fa-play"></i> Ver demo
       </button>
       <div id="videoExpanded" class="video-expanded" style="display: none;">
         <div class="video-container">
           <div class="video-header">
-            <h3 style="margin: 0;"><i class="fas fa-film"></i> Showreel 2026</h3>
+            <h3 style="margin: 0; font-size: 0.9rem;"><i class="fas fa-film"></i> Showreel 2026</h3>
             <button id="closeVideoBtn" class="close-video-btn"><i class="fas fa-times"></i> Cerrar</button>
           </div>
           <div class="video-wrapper">
@@ -666,12 +922,12 @@
     <div class="contacto-area" id="contacto">
       <i class="fas fa-envelope floating-icon"></i>
       <h2><i class="fas fa-headset"></i> ¿Listo para crecer?</h2>
-      <p style="margin-bottom: 1rem;">Cuéntanos tu proyecto y te contactaremos en <strong>menos de 24h</strong></p>
+      <p style="margin-bottom: 0.75rem;">Te contactaremos en <strong>menos de 24h</strong></p>
       
       <form id="contactForm">
         <div class="form-row">
           <div class="form-group">
-            <label>Nombre completo *</label>
+            <label>Nombre *</label>
             <input type="text" id="nombre" placeholder="Juan Pérez" required>
           </div>
           <div class="form-group">
@@ -691,11 +947,11 @@
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>Servicio de interés *</label>
+            <label>Servicio *</label>
             <select id="servicio" required>
               <option value="">Selecciona</option>
               <option value="branding">Branding</option>
-              <option value="audiovisual">Producción Audiovisual</option>
+              <option value="audiovisual">Audiovisual</option>
               <option value="marketing">Marketing Digital</option>
               <option value="publicidad">Publicidad 360°</option>
             </select>
@@ -704,49 +960,49 @@
             <label>Presupuesto</label>
             <select id="presupuesto">
               <option value="">Selecciona</option>
-              <option value="menos-5k">Menos de $5,000</option>
-              <option value="5k-15k">$5,000 - $15,000</option>
-              <option value="15k-30k">$15,000 - $30,000</option>
-              <option value="mas-30k">Más de $30,000</option>
+              <option value="menos-5k">Menos de $5K</option>
+              <option value="5k-15k">$5K - $15K</option>
+              <option value="15k-30k">$15K - $30K</option>
+              <option value="mas-30k">Más de $30K</option>
             </select>
           </div>
         </div>
         <div class="form-group">
           <label>Mensaje *</label>
-          <textarea id="mensaje" rows="3" placeholder="Cuéntanos sobre tu proyecto, objetivos y necesidades..." required></textarea>
+          <textarea id="mensaje" rows="2" placeholder="Cuéntanos sobre tu proyecto..." required></textarea>
         </div>
         <div class="form-group">
-          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
             <input type="checkbox" id="terminos" required style="width: auto;">
-            Acepto <a href="#" style="color:#ff7a2f;">términos y condiciones</a>
+            Acepto <a href="#" style="color:#ff7a2f;">términos</a>
           </label>
         </div>
         <button type="submit" class="submit-btn" id="submitBtn">
-          <i class="fas fa-paper-plane"></i> Enviar mensaje
+          <i class="fas fa-paper-plane"></i> Enviar
         </button>
         <div class="form-message" id="formMessage"></div>
       </form>
       
-      <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <i class="fas fa-envelope" style="color:#ff7a2f;"></i>
-          <div><small>hola@humbrellaman.com</small></div>
+      <div style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <i class="fas fa-envelope" style="color:#ff7a2f; font-size:0.8rem;"></i>
+          <small>hola@humbrellaman.com</small>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <i class="fab fa-whatsapp" style="color:#25D366;"></i>
-          <div><small>+51 999 888 777</small></div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <i class="fab fa-whatsapp" style="color:#25D366; font-size:0.8rem;"></i>
+          <small>+51 999 888 777</small>
         </div>
       </div>
     </div>
 
     <!-- ========== FOOTER ========== -->
     <div class="footer-area">
-      <p>© 2026 Humbrella Man · Agencia Publicitaria Creativa</p>
-      <div style="margin-top: 0.75rem;">
-        <i class="fab fa-instagram" style="margin: 0 10px; cursor: pointer;"></i>
-        <i class="fab fa-linkedin" style="margin: 0 10px; cursor: pointer;"></i>
-        <i class="fab fa-behance" style="margin: 0 10px; cursor: pointer;"></i>
-        <i class="fab fa-tiktok" style="margin: 0 10px; cursor: pointer;"></i>
+      <p style="font-size: 0.7rem;">© 2026 Humbrella Man · Agencia Publicitaria Creativa</p>
+      <div style="margin-top: 0.5rem;">
+        <i class="fab fa-instagram" style="margin: 0 8px; cursor: pointer; font-size: 0.9rem;"></i>
+        <i class="fab fa-linkedin" style="margin: 0 8px; cursor: pointer; font-size: 0.9rem;"></i>
+        <i class="fab fa-behance" style="margin: 0 8px; cursor: pointer; font-size: 0.9rem;"></i>
+        <i class="fab fa-tiktok" style="margin: 0 8px; cursor: pointer; font-size: 0.9rem;"></i>
       </div>
     </div>
   </div>
@@ -868,11 +1124,11 @@
         if (!telefono) { document.getElementById('telefono')?.classList.add('error'); hasError = true; }
         if (!servicio) { document.getElementById('servicio')?.classList.add('error'); hasError = true; }
         if (!mensaje) { document.getElementById('mensaje')?.classList.add('error'); hasError = true; }
-        if (!terminos) { hasError = true; showToast('Acepta los términos y condiciones', 'error'); }
+        if (!terminos) { hasError = true; showToast('Acepta los términos', 'error'); }
         
         if (hasError) {
           formMessage.className = 'form-message error';
-          formMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Completa todos los campos requeridos';
+          formMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Completa todos los campos';
           formMessage.style.display = 'block';
           setTimeout(() => formMessage.style.display = 'none', 4000);
           return;
@@ -887,21 +1143,21 @@
           localStorage.setItem('humbrella_cotizaciones', JSON.stringify(cotizaciones));
           
           formMessage.className = 'form-message success';
-          formMessage.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje enviado! Te contactaremos en menos de 24 horas.';
+          formMessage.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje enviado! Te contactaremos pronto.';
           formMessage.style.display = 'block';
-          showToast('¡Mensaje enviado con éxito!', 'success');
+          showToast('¡Mensaje enviado!', 'success');
           contactForm.reset();
           setTimeout(() => formMessage.style.display = 'none', 5000);
         } catch (error) {
           formMessage.className = 'form-message success';
-          formMessage.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje recibido! (Demo) Te contactaremos pronto.';
+          formMessage.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje recibido! Te contactaremos pronto.';
           formMessage.style.display = 'block';
           showToast('¡Mensaje recibido!', 'success');
           contactForm.reset();
           setTimeout(() => formMessage.style.display = 'none', 5000);
         } finally {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar mensaje';
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar';
         }
       });
     }
