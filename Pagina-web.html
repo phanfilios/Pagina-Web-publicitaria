@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Humbrella Man | Agencia Publicitaria Creativa</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0f;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* ========== SCROLLBAR ========== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1a1a2e; }
+    ::-webkit-scrollbar-thumb { background: #ff7a2f; border-radius: 10px; }
+
+    /* ========== HEADER ========== */
+    .header-area {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 20, 0.95);
+      backdrop-filter: blur(12px);
+      border-radius: 60px;
+      padding: 0.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      font-size: 1.8rem;
+      color: #ff7a2f;
+    }
+
+    .logo-text {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .logo-badge {
+      background: rgba(255, 122, 47, 0.2);
+      padding: 2px 8px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      margin-left: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a:hover { color: #ff7a2f; }
+
+    .btn-cotizar {
+      background: linear-gradient(95deg, #ff7a2f, #ffb347);
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 1.8rem;
+      color: #ff7a2f;
+      background: none;
+      border: none;
+    }
+
+    /* ========== MENÚ MÓVIL ========== */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 350px;
+      height: 100vh;
+      background: linear-gradient(135deg, #1a1a2e, #0f0f1a);
+      z-index: 2000;
+      padding: 2rem;
+      transition: right 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .mobile-menu.active { right: 0; }
+
+    .mobile-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 122, 47, 0.3);
+    }
+
+    .close-menu {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #ff7a2f;
+      cursor: pointer;
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-left: 3px solid transparent;
+      padding-left: 12px;
+    }
+
+    .mobile-nav-links a:hover {
+      color: #ff7a2f;
+      border-left-color: #ff7a2f;
+    }
+
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* ========== LAYOUT PRINCIPAL ========== */
+    .master-grid {
+      display: grid;
+      grid-template-areas: 
+        "header header header header"
+        "hero hero hero hero"
+        "branding servicios destacado destacado"
+        "audiovisual audiovisual contacto contacto"
+        "footer footer footer footer";
+      gap: 1.25rem;
+      padding: 1.25rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* ========== TARJETAS ========== */
+    .grid-card {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      border-radius: 20px;
+      padding: 1.25rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .grid-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(255, 122, 47, 0.15);
+    }
+
+    .hero-area { 
+      grid-area: hero; 
+      background: radial-gradient(circle at 30% 20%, #ff7a2f20, #0a0a0f); 
+      border-radius: 32px; 
+      text-align: center; 
+      padding: 3rem 2rem; 
+    }
+    
+    .branding-area { grid-area: branding; background: linear-gradient(125deg, #1e3a5f, #0f172a); }
+    .servicios-area { grid-area: servicios; background: linear-gradient(125deg, #2d1b4e, #0f172a); }
+    .destacado-area { grid-area: destacado; background: linear-gradient(125deg, #1a472a, #0f172a); }
+    .audiovisual-area { grid-area: audiovisual; background: linear-gradient(125deg, #5f2a1a, #0f172a); }
+    
+    .contacto-area {
+      grid-area: contacto;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      border-radius: 24px;
+      padding: 1.5rem;
+      border: 2px solid #ff7a2f;
+    }
+
+    .footer-area { 
+      grid-area: footer; 
+      text-align: center; 
+      padding: 1.5rem; 
+      background: rgba(0,0,0,0.4); 
+      border-radius: 32px; 
+    }
+
+    /* Elementos flotantes */
+    .floating-icon {
+      position: absolute;
+      font-size: 4rem;
+      opacity: 0.06;
+      bottom: -15px;
+      right: -15px;
+      pointer-events: none;
+    }
+
+    /* Tipografía */
+    h2 { 
+      font-size: 1.5rem; 
+      margin-bottom: 0.75rem; 
+      background: linear-gradient(135deg, #ffb347, #ff7a2f); 
+      -webkit-background-clip: text; 
+      background-clip: text; 
+      color: transparent; 
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    h3 { 
+      font-size: 1.1rem; 
+      margin-bottom: 0.5rem; 
+      color: #ffb347; 
+    }
+    
+    p { 
+      line-height: 1.5; 
+      color: #ccc; 
+      font-size: 0.85rem;
+    }
+    
+    ul { list-style: none; margin-top: 0.5rem; }
+    
+    li { 
+      margin: 0.4rem 0; 
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+      font-size: 0.8rem;
+    }
+    
+    li i { color: #ff7a2f; font-size: 0.75rem; }
+
+    /* Botones */
+    .btn-primary, .btn-grid {
+      display: inline-block;
+      background: linear-gradient(95deg, #ff7a2f, #ffb347);
+      padding: 10px 24px;
+      border-radius: 40px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary:hover, .btn-grid:hover { 
+      transform: scale(1.02); 
+      filter: brightness(1.05);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #ff7a2f;
+      color: #ff7a2f;
+      padding: 8px 20px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 122, 47, 0.1);
+    }
+
+    /* ========== SECCIÓN DE ESTADÍSTICAS (NUEVA) ========== */
+    .stats-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item-compact {
+      text-align: center;
+      flex: 1;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      padding: 0.75rem;
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ff7a2f;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: #888;
+    }
+
+    /* ========== BADGES DE SERVICIOS ========== */
+    .service-badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.75rem 0;
+    }
+
+    .service-tag {
+      background: rgba(255, 122, 47, 0.15);
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      color: #ffb347;
+    }
+
+    /* ========== VIDEO EXPANDIBLE ========== */
+    .video-expanded {
+      margin-top: 1rem;
+      animation: expandVideo 0.3s ease;
+    }
+
+    @keyframes expandVideo {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .video-container {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 16px;
+      padding: 1rem;
+      border: 1px solid rgba(255, 122, 47, 0.3);
+    }
+
+    .video-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .close-video-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #ff7a2f;
+      font-size: 0.8rem;
+      cursor: pointer;
+      padding: 4px 12px;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 260px;
+      border-radius: 12px;
+    }
+
+    /* ========== FORMULARIO ========== */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .form-group { margin-bottom: 0.75rem; }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.3rem;
+      color: #ffb347;
+      font-weight: 500;
+      font-size: 0.75rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: white;
+      font-family: inherit;
+      font-size: 0.8rem;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #ff7a2f;
+    }
+
+    .submit-btn {
+      background: linear-gradient(95deg, #ff7a2f, #ffb347);
+      padding: 10px;
+      border: none;
+      border-radius: 40px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      font-size: 0.85rem;
+    }
+
+    .form-message {
+      margin-top: 0.75rem;
+      padding: 8px;
+      border-radius: 10px;
+      text-align: center;
+      display: none;
+      font-size: 0.75rem;
+    }
+
+    .form-message.success {
+      display: block;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid #10b981;
+      color: #10b981;
+    }
+
+    .form-message.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid #ef4444;
+      color: #ef4444;
+    }
+
+    .toast-notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 3000;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background: #1a1a2e;
+      border-left: 4px solid #10b981;
+      color: white;
+      font-size: 0.8rem;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .master-grid {
+        grid-template-areas: 
+          "header"
+          "hero"
+          "branding"
+          "servicios"
+          "destacado"
+          "audiovisual"
+          "contacto"
+          "footer";
+        gap: 1rem;
+      }
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .form-row { grid-template-columns: 1fr; }
+      .video-wrapper iframe { height: 200px; }
+    }
+
+    @media (max-width: 480px) {
+      .grid-card { padding: 1rem; }
+      .hero-area { padding: 1.5rem; }
+      h2 { font-size: 1.3rem; }
+      .stats-row { flex-direction: column; }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="master-grid">
+    
+    <!-- ========== HEADER ========== -->
+    <div class="header-area">
+      <div class="logo">
+        <i class="fas fa-umbrella logo-icon"></i>
+        <span class="logo-text">Humbrella Man</span>
+        <span class="logo-badge">Creative Agency</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#servicios"><i class="fas fa-cogs"></i> Servicios</a>
+        <a href="#nosotros"><i class="fas fa-users"></i> Nosotros</a>
+        <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
+        <a href="#contacto" class="btn-cotizar"><i class="fas fa-rocket"></i> Cotizar</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+    </div>
+
+    <!-- ========== MENÚ MÓVIL ========== -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-header">
+        <div><i class="fas fa-umbrella" style="color:#ff7a2f; font-size:1.5rem;"></i> <strong>Humbrella Man</strong></div>
+        <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="#servicios"><i class="fas fa-cogs"></i> Servicios</a>
+        <a href="#nosotros"><i class="fas fa-users"></i> Nosotros</a>
+        <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
+        <a href="#contacto" style="background: linear-gradient(95deg, #ff7a2f, #ffb347); border-radius: 40px; justify-content: center; padding: 10px;"><i class="fas fa-rocket"></i> Cotizar proyecto</a>
+      </div>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- ========== HERO ========== -->
+    <div class="hero-area">
+      <i class="fas fa-bolt floating-icon"></i>
+      <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Ideas que <span style="color:#ff7a2f;">rompen</span> lo lineal</h1>
+      <p style="font-size: 1.1rem; font-weight: 500; margin-bottom: 1rem;">✨ Ideas que inspiran, marcas que perduran ✨</p>
+      <div class="service-badge-group" style="justify-content: center;">
+        <span class="service-tag">🎯 Estrategia</span>
+        <span class="service-tag">🎨 Creatividad</span>
+        <span class="service-tag">📊 Resultados</span>
+      </div>
+      <a href="#contacto" class="btn-primary" style="margin-top: 1rem;"><i class="fas fa-rocket"></i> Comienza tu proyecto</a>
+    </div>
+
+    <!-- ========== BRANDING ========== -->
+    <div class="branding-area grid-card" id="nosotros">
+      <i class="fas fa-palette floating-icon"></i>
+      <h2><i class="fas fa-paintbrush"></i> Branding</h2>
+      <p>Construimos identidades de marca que transmiten emociones, valores y personalidad. Más que un logotipo, una historia que conecta.</p>
+      <div class="service-badge-group">
+        <span class="service-tag">🎨 Identidad visual</span>
+        <span class="service-tag">📖 Storytelling</span>
+        <span class="service-tag">📱 Consistencia</span>
+      </div>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> <strong>+45%</strong> reconocimiento de marca</li>
+        <li><i class="fas fa-check-circle"></i> <strong>+200%</strong> engagement</li>
+      </ul>
+      <button class="btn-outline" style="margin-top: 0.75rem; width: fit-content;" onclick="showServiceInfo('branding')">Saber más →</button>
+    </div>
+
+    <!-- ========== SERVICIOS ========== -->
+    <div class="servicios-area grid-card" id="servicios">
+      <i class="fas fa-cogs floating-icon"></i>
+      <h2><i class="fas fa-chart-line"></i> Servicios</h2>
+      <p>Soluciones integrales para potenciar tu negocio</p>
+      <ul>
+        <li><i class="fas fa-palette"></i> <strong>Branding estratégico</strong><br><small>Identidad y posicionamiento</small></li>
+        <li><i class="fas fa-video"></i> <strong>Producción Audiovisual</strong><br><small>Spots y contenido digital</small></li>
+        <li><i class="fas fa-chart-simple"></i> <strong>Marketing Digital 360</strong><br><small>SEO, SEM, Social Media</small></li>
+        <li><i class="fas fa-bullhorn"></i> <strong>Publicidad integrada</strong><br><small>Campañas omnicanal</small></li>
+      </ul>
+      <button class="btn-outline" style="margin-top: 0.5rem; width: fit-content;" onclick="showAllServices()">Ver todos →</button>
+    </div>
+
+    <!-- ========== DESTACADO ========== -->
+    <div class="destacado-area grid-card">
+      <i class="fas fa-crown floating-icon"></i>
+      <h2><i class="fas fa-trophy"></i> Trayectoria</h2>
+      <div class="stats-row">
+        <div class="stat-item-compact">
+          <div class="stat-number">8+</div>
+          <div class="stat-label">años de experiencia</div>
+        </div>
+        <div class="stat-item-compact">
+          <div class="stat-number">150+</div>
+          <div class="stat-label">proyectos exitosos</div>
+        </div>
+        <div class="stat-item-compact">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">clientes satisfechos</div>
+        </div>
+        <div class="stat-item-compact">
+          <div class="stat-number">12</div>
+          <div class="stat-label">premios creativos</div>
+        </div>
+      </div>
+      <div class="service-badge-group" style="margin-top: 0.5rem;">
+        <span class="service-tag">🏆 Latinoamérica</span>
+        <span class="service-tag">🚀 Innovación</span>
+        <span class="service-tag">⭐ Excelencia</span>
+      </div>
+    </div>
+
+    <!-- ========== PRODUCCIÓN AUDIOVISUAL ========== -->
+    <div class="audiovisual-area grid-card" id="audiovisualSection">
+      <i class="fas fa-film floating-icon"></i>
+      <h2><i class="fas fa-video"></i> Producción Audiovisual</h2>
+      <p>Contenido visual de alto impacto que emociona y conecta con tu audiencia.</p>
+      <div class="service-badge-group">
+        <span class="service-tag">🎬 Spots publicitarios</span>
+        <span class="service-tag">📱 Reels/TikTok</span>
+        <span class="service-tag">🎨 Motion graphics</span>
+      </div>
+      <ul>
+        <li><i class="fas fa-chart-line"></i> <strong>+150%</strong> engagement en redes</li>
+        <li><i class="fas fa-fire"></i> <strong>5M+</strong> vistas virales</li>
+      </ul>
+      <button id="expandVideoBtn" class="btn-outline" style="margin-top: 0.5rem; width: fit-content;">
+        <i class="fas fa-play"></i> Ver demo
+      </button>
+      <div id="videoExpanded" class="video-expanded" style="display: none;">
+        <div class="video-container">
+          <div class="video-header">
+            <h3 style="margin: 0;"><i class="fas fa-film"></i> Showreel 2026</h3>
+            <button id="closeVideoBtn" class="close-video-btn"><i class="fas fa-times"></i> Cerrar</button>
+          </div>
+          <div class="video-wrapper">
+            <iframe id="youtubeVideo" src="https://www.youtube.com/embed/9vJRopau0g0" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== CONTACTO ========== -->
+    <div class="contacto-area" id="contacto">
+      <i class="fas fa-envelope floating-icon"></i>
+      <h2><i class="fas fa-headset"></i> ¿Listo para crecer?</h2>
+      <p style="margin-bottom: 1rem;">Cuéntanos tu proyecto y te contactaremos en <strong>menos de 24h</strong></p>
+      
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre completo *</label>
+            <input type="text" id="nombre" placeholder="Juan Pérez" required>
+          </div>
+          <div class="form-group">
+            <label>Empresa</label>
+            <input type="text" id="empresa" placeholder="Tu empresa">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" id="email" placeholder="tu@empresa.com" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono *</label>
+            <input type="tel" id="telefono" placeholder="+51 999 888 777" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Servicio de interés *</label>
+            <select id="servicio" required>
+              <option value="">Selecciona</option>
+              <option value="branding">Branding</option>
+              <option value="audiovisual">Producción Audiovisual</option>
+              <option value="marketing">Marketing Digital</option>
+              <option value="publicidad">Publicidad 360°</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Presupuesto</label>
+            <select id="presupuesto">
+              <option value="">Selecciona</option>
+              <option value="menos-5k">Menos de $5,000</option>
+              <option value="5k-15k">$5,000 - $15,000</option>
+              <option value="15k-30k">$15,000 - $30,000</option>
+              <option value="mas-30k">Más de $30,000</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Mensaje *</label>
+          <textarea id="mensaje" rows="3" placeholder="Cuéntanos sobre tu proyecto, objetivos y necesidades..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="terminos" required style="width: auto;">
+            Acepto <a href="#" style="color:#ff7a2f;">términos y condiciones</a>
+          </label>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <i class="fas fa-paper-plane"></i> Enviar mensaje
+        </button>
+        <div class="form-message" id="formMessage"></div>
+      </form>
+      
+      <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <i class="fas fa-envelope" style="color:#ff7a2f;"></i>
+          <div><small>hola@humbrellaman.com</small></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+          <div><small>+51 999 888 777</small></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <div class="footer-area">
+      <p>© 2026 Humbrella Man · Agencia Publicitaria Creativa</p>
+      <div style="margin-top: 0.75rem;">
+        <i class="fab fa-instagram" style="margin: 0 10px; cursor: pointer;"></i>
+        <i class="fab fa-linkedin" style="margin: 0 10px; cursor: pointer;"></i>
+        <i class="fab fa-behance" style="margin: 0 10px; cursor: pointer;"></i>
+        <i class="fab fa-tiktok" style="margin: 0 10px; cursor: pointer;"></i>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ========== MENÚ HAMBURGUESA ==========
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const closeMenu = document.getElementById('closeMenu');
+    
+    function openMenu() {
+      mobileMenu.classList.add('active');
+      menuOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeMenuFunc() {
+      mobileMenu.classList.remove('active');
+      menuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    if (menuToggle) menuToggle.addEventListener('click', openMenu);
+    if (closeMenu) closeMenu.addEventListener('click', closeMenuFunc);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenuFunc);
+    
+    document.querySelectorAll('.mobile-nav-links a, .nav-links a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        setTimeout(closeMenuFunc, 200);
+      });
+    });
+    
+    // ========== VIDEO ==========
+    const expandVideoBtn = document.getElementById('expandVideoBtn');
+    const videoExpanded = document.getElementById('videoExpanded');
+    const closeVideoBtn = document.getElementById('closeVideoBtn');
+    const youtubeIframe = document.getElementById('youtubeVideo');
+    let videoSrc = youtubeIframe ? youtubeIframe.src : '';
+    
+    function expandVideo() {
+      if (videoExpanded) {
+        videoExpanded.style.display = 'block';
+        setTimeout(() => videoExpanded.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+      }
+    }
+    
+    function closeVideo() {
+      if (videoExpanded) {
+        videoExpanded.style.display = 'none';
+        if (youtubeIframe && videoSrc) {
+          youtubeIframe.src = '';
+          setTimeout(() => { youtubeIframe.src = videoSrc; }, 100);
+        }
+      }
+    }
+    
+    if (expandVideoBtn) expandVideoBtn.addEventListener('click', expandVideo);
+    if (closeVideoBtn) closeVideoBtn.addEventListener('click', closeVideo);
+    
+    // ========== FUNCIONES DE INFORMACIÓN ==========
+    function showServiceInfo(service) {
+      const messages = {
+        branding: '🎨 Branding: Creamos identidades visuales únicas que conectan emocionalmente con tu audiencia.',
+        audiovisual: '🎬 Producción Audiovisual: Contenido de alto impacto para todas las plataformas.',
+        marketing: '📈 Marketing Digital: Estrategias basadas en datos para maximizar tu ROI.',
+        publicidad: '📢 Publicidad 360°: Campañas integradas que generan resultados medibles.'
+      };
+      alert(messages[service] || 'Contáctanos para más información sobre este servicio.');
+    }
+    
+    function showAllServices() {
+      alert('🚀 Nuestros Servicios:\n\n• Branding estratégico\n• Producción Audiovisual\n• Marketing Digital 360\n• Publicidad integrada\n\n¡Contáctanos para más información!');
+    }
+    
+    window.showServiceInfo = showServiceInfo;
+    window.showAllServices = showAllServices;
+    
+    // ========== FORMULARIO ==========
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    function showToast(message, type = 'success') {
+      const toast = document.createElement('div');
+      toast.className = 'toast-notification';
+      toast.style.borderLeftColor = type === 'success' ? '#10b981' : '#ef4444';
+      toast.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> ${message}`;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 4000);
+    }
+    
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+    
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const nombre = document.getElementById('nombre')?.value.trim() || '';
+        const email = document.getElementById('email')?.value.trim() || '';
+        const telefono = document.getElementById('telefono')?.value.trim() || '';
+        const servicio = document.getElementById('servicio')?.value || '';
+        const mensaje = document.getElementById('mensaje')?.value.trim() || '';
+        const terminos = document.getElementById('terminos')?.checked || false;
+        
+        document.querySelectorAll('.form-group input, .form-group select, .form-group textarea').forEach(f => f.classList.remove('error'));
+        
+        let hasError = false;
+        if (!nombre) { document.getElementById('nombre')?.classList.add('error'); hasError = true; }
+        if (!email || !isValidEmail(email)) { document.getElementById('email')?.classList.add('error'); hasError = true; }
+        if (!telefono) { document.getElementById('telefono')?.classList.add('error'); hasError = true; }
+        if (!servicio) { document.getElementById('servicio')?.classList.add('error'); hasError = true; }
+        if (!mensaje) { document.getElementById('mensaje')?.classList.add('error'); hasError = true; }
+        if (!terminos) { hasError = true; showToast('Acepta los términos y condiciones', 'error'); }
+        
+        if (hasError) {
+          formMessage.className = 'form-message error';
+          formMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Completa todos los campos requeridos';
+          formMessage.style.display = 'block';
+          setTimeout(() => formMessage.style.display = 'none', 4000);
+          return;
+        }
+        
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Enviando...';
+        
+        try {
+          const cotizaciones = JSON.parse(localStorage.getItem('humbrella_cotizaciones') || '[]');
+          cotizaciones.push({ id: Date.now(), nombre, email, telefono, servicio, mensaje, fecha: new Date().toISOString() });
+          localStorage.setItem('humbrella_cotizaciones', JSON.stringify(cotizaciones));
+          
+          formMessage.className = 'form-message success';
+          formMessage.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje enviado! Te contactaremos en menos de 24 horas.';
+          formMessage.style.display = 'block';
+          showToast('¡Mensaje enviado con éxito!', 'success');
+          contactForm.reset();
+          setTimeout(() => formMessage.style.display = 'none', 5000);
+        } catch (error) {
+          formMessage.className = 'form-message success';
+          formMessage.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje recibido! (Demo) Te contactaremos pronto.';
+          formMessage.style.display = 'block';
+          showToast('¡Mensaje recibido!', 'success');
+          contactForm.reset();
+          setTimeout(() => formMessage.style.display = 'none', 5000);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar mensaje';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
